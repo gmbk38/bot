@@ -1,10 +1,11 @@
 # from this import d
 # from typing import Dict
-from dataclasses import dataclass
-import bottle_websocket
+# from dataclasses import dataclass
+# import bottle_websocket
 import telebot
 import pymysql
 from telebot import types # URL-кнопка
+from logs import User_log as ul
 
 try:
     # Вводим данные для авторизации бота в нашей базе
@@ -49,6 +50,7 @@ for i in button_teg.split('_'):
 pinned = None
 status_change = 0
 status = None
+user = ul()
 
 # Приветствие
 @bot.message_handler(commands=['start'])
@@ -61,6 +63,12 @@ def hello_msg(message):
     bot.pin_chat_message(message.chat.id,message.id+2)
     pinned = message.id+2
 
+    user.id = message.chat.id
+    user.fname = message.from_user.first_name
+    user.lname = message.from_user.last_name
+    user.nickname = message.from_user.username
+    user.user_record()
+
 # @bot.message_handler(commands=['tegs'])
 # def teg_msg(message):
 #     bot.send_message(message.chat.id, "Часто задаваемые вопросы", reply_markup=teg_keyboard)
@@ -72,6 +80,8 @@ def answer_finder(message):
     global status_change
     global status
 
+    user.chat_record(message.text)
+
     if message.text == 'Изменить категорию':
         status_change = 1
         bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=teg_keyboard)
@@ -79,9 +89,16 @@ def answer_finder(message):
     elif message.text in teg_control and status_change == 1:
         status_change = 0
         #print(pinned)
-        status = message.text
-        bot.edit_message_text(chat_id=message.chat.id, message_id=pinned, text='Категория: ' + message.text)
-        bot.send_message(message.chat.id, "Категория изменена", reply_markup=status_keyboard)
+        if status == message.text:
+            bot.send_message(message.chat.id, "Вы выбрали ту же категорию", reply_markup=status_keyboard)
+        else:    
+            try:
+                status = message.text
+                bot.edit_message_text(chat_id=message.chat.id, message_id=pinned, text='Категория: ' + message.text)
+                bot.send_message(message.chat.id, "Категория изменена", reply_markup=status_keyboard)
+            except Exception as ex:
+                user.err_record(str(ex))
+                bot.send_message(message.chat.id, "Вышло обновление бота. Перезапустить - /start")
 
     elif message.text == 'Вопросы по категории':
         if status == None:
