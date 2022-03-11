@@ -97,7 +97,7 @@ def answer_finder(message):
                 bot.edit_message_text(chat_id=message.chat.id, message_id=pinned, text='Категория: ' + message.text)
                 bot.send_message(message.chat.id, "Категория изменена", reply_markup=status_keyboard)
             except Exception as ex:
-                user.err_record(str(ex))
+                user.err_record(ex)
                 bot.send_message(message.chat.id, "Вышло обновление бота. Перезапустить - /start")
 
     elif message.text == 'Вопросы по категории':

@@ -14,6 +14,7 @@ class User_log():
         lines = file_check.readlines()
         mark = 0
         for line in lines:
+            #проверяем, пользовался ли человек ботом
             line = line.replace("\n","")
             if line == str(self.id) + " | " + str(self.fname) + " | " + str(self.lname) + " | " + str(self.nickname):
                 mark = 1
@@ -31,7 +32,11 @@ class User_log():
         file_upd.write(date + " " + msg + "\n")
         file_upd.close()
 
-    def err_record(ex):
-        file_upd = open("logs/chats/err.txt","a+",encoding='utf-8')
+    def err_record(self,ex):
+        #запись ошибок
+        file_upd = open("logs/err/err.txt","a+",encoding='utf-8')
+        date = str(datetime.now()).split(".")[0]
+        file_upd.write(date + " " + str(self.id) + "\n")
         file_upd.write(str(ex) + "\n")
+        file_upd.write("\n")
         file_upd.close()
