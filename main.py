@@ -7,6 +7,7 @@ import pymysql
 from telebot import types # URL-кнопка
 from logs import User_log as ul
 
+
 try:
     # Вводим данные для авторизации бота в нашей базе
     conn = pymysql.connect(
@@ -27,51 +28,48 @@ try:
         # conn.commit() # Коммит для сохранения данных в случае редактирования БД
         conn.close()
 except Exception as ex:
-
     print("BAD REQUEST")
     print(ex)
+
 
 BOT_TOKEN = '5227789686:AAEAFMeHdqM7RnAC0FBujIrWuWGptuc-L2A'
 bot = telebot.TeleBot(BOT_TOKEN)
 
-button_teg = 'Скидка_Бюджет_Оплата обучения_Льготы' # Добавлять теги через '_'
+button_teg = 'Скидка_Бюджет_Оплата обучения_Льготы' #добавлять теги через '_'
 
 teg_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 teg_control = []
 
-status_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+status_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True) #меню статуса
 status_keyboard.add('Изменить категорию')
 status_keyboard.add('Вопросы по категории')
 
 for i in button_teg.split('_'):
+    #заполняем меню тегов
     teg_control.append(i)
     teg_keyboard.add(i)
 
-pinned = None
-status_change = 0
+pinned = None #закреплённое сообщение
+status_change = 0 #флаг смены статуса
 status = None
-user = ul()
+user = ul() #объявляем пользователя
 
 # Приветствие
 @bot.message_handler(commands=['start'])
 def hello_msg(message):
-    global pinned
 
+    global pinned
     bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name + ", чем могу помочь?" + '\n')
     bot.send_message(message.chat.id, "Категория: Не выбрана")
     bot.send_message(message.chat.id, "Используй меню для изменения категории", reply_markup=status_keyboard)
     bot.pin_chat_message(message.chat.id,message.id+2)
-    pinned = message.id+2
+    pinned = message.id+2 #закрепляем сообщение со статусом
 
     user.id = message.chat.id
     user.fname = message.from_user.first_name
     user.lname = message.from_user.last_name
     user.nickname = message.from_user.username
     user.user_record()
-
-# @bot.message_handler(commands=['tegs'])
-# def teg_msg(message):
-#     bot.send_message(message.chat.id, "Часто задаваемые вопросы", reply_markup=teg_keyboard)
 
 # Ответ на вопрос
 @bot.message_handler(content_types=['text'])
@@ -88,7 +86,6 @@ def answer_finder(message):
 
     elif message.text in teg_control and status_change == 1:
         status_change = 0
-        #print(pinned)
         if status == message.text:
             bot.send_message(message.chat.id, "Вы выбрали ту же категорию", reply_markup=status_keyboard)
         else:    
@@ -107,7 +104,6 @@ def answer_finder(message):
                  bot.send_message(message.chat.id, dict['question'])
         else:
             for dict in rows:
-                # print(status)
                 if status[:5].lower() in dict['question'].lower() or status[:5].lower() in dict['answer'].lower():
                     bot.send_message(message.chat.id, dict['question'])
 
@@ -127,7 +123,7 @@ def answer_finder(message):
         else:
             # Ссылаемся на источник
             keyboard = types.InlineKeyboardMarkup()
-            url_button = types.InlineKeyboardButton(text="Найти в Яндексе", url="https://yandex.ru/")
+            url_button = types.InlineKeyboardButton(text="Найти на сайте Финансового университета", url="http://www.fa.ru/Pages/Home.aspx")
             keyboard.add(url_button)
             bot.send_message(message.chat.id, "Затрудняюсь помочь тебе в этом вопросе...", reply_markup=keyboard)
 

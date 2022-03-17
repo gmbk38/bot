@@ -8,6 +8,7 @@ class User_log():
         self.lname = None
         self.nickname = None
 
+
     def user_record(self):
         #добавляем лог пользователя
         file_check = open("logs/users/users.txt","r",encoding='utf-8')
@@ -26,14 +27,15 @@ class User_log():
 
 
     def chat_record(self,msg):
-        #запись сообщений пользователя
+        #записываем сообщения пользователя
         file_upd = open("logs/chats/" + str(self.id) + ".txt","a+",encoding='utf-8')
         date = str(datetime.now()).split(".")[0]
         file_upd.write(date + " " + msg + "\n")
         file_upd.close()
 
+
     def err_record(self,ex):
-        #запись ошибок
+        #записываем ошибки
         file_upd = open("logs/err/err.txt","a+",encoding='utf-8')
         date = str(datetime.now()).split(".")[0]
         file_upd.write(date + " " + str(self.id) + "\n")
