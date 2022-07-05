@@ -19,6 +19,13 @@ try:
     with conn.cursor() as req:
         query = "SELECT q AS question, a 'answer' FROM final_test;"
         req.execute(query)
+        row1= req.fetchone()
+        print (row1)
+        print (*row1, sep=' ')
+        row2 = req.fetchall()
+        print (row2)
+        print (*row2, sep=' ')
+
         rows = req.fetchall()
         # print(rows) # Вывод всех данных БД в консоль при успешном подключении
         # conn.commit() # Коммит для сохранения данных в случае редактирования БД
