@@ -6,7 +6,6 @@ body {
 	-ms-user-select: none;       
 	user-select: none;   
     background-color: rgb(161, 171, 255);
-    background-image: url('pic/main_bg.png');
 }
 
 a { 

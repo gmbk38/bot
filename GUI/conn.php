@@ -12,7 +12,10 @@ $a = $conn->real_escape_string($_POST["a"]);
 $sql = "INSERT INTO final_test (q, a) values ('$q','$a');";
 
 if ($conn->query($sql) === TRUE) {
- echo "Запрос выполнен";	
+   // echo "Запрос выполнен";	
+   // echo '<script>alert("Запрос выполнен")</script>';
+   $new_url = 'index.html';
+   header('Location: '.$new_url);
 }
 $conn->close();
 ?>

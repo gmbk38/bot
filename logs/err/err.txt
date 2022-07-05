@@ -4,3 +4,6 @@ A request to the Telegram API was unsuccessful. Error code: 400. Description: Ba
 2022-03-18 12:19:01 None
 A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message to edit not found
 
+2022-03-30 16:30:42 None
+A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: message to edit not found
+

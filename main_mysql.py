@@ -1,16 +1,16 @@
 import telebot
-import mariadb
+import pymysql
 from telebot import types # URL-кнопка
 from logs import User_log as ul
 
 
 try:
     # Вводим данные для авторизации бота в нашей базе
-    conn = mariadb.connect(
+    conn = pymysql.connect(
     host="localhost",
     port=3306,
-    user="root",
-    password="Gorizont22",
+    user="bot",
+    password="12345",
     database="test",
     cursorclass=pymysql.cursors.DictCursor # Результат запроса в виде словарей
     )
