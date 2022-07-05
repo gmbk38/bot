@@ -8,11 +8,11 @@ try:
     # Вводим данные для авторизации бота в нашей базе
     conn = mariadb.connect(
     host="localhost",
-    port=3306,
+    # port=3306,
     user="root",
     password="Gorizont22",
     database="test",
-    cursorclass=pymysql.cursors.DictCursor # Результат запроса в виде словарей
+    # cursorclass=pymysql.cursors.DictCursor # Результат запроса в виде словарей
     )
     print("OK")
 
