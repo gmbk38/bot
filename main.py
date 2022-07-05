@@ -38,8 +38,10 @@ mdb_row = []
 for element in rows:
     mdb_row.append({element[0]: element[1]})
 
-print("------------------------------------------------")
-print (mdb_row)
+# print("------------------------------------------------")
+# print (mdb_row)
+
+rows = mdb_row
 
 
 BOT_TOKEN = '5227789686:AAEAFMeHdqM7RnAC0FBujIrWuWGptuc-L2A'
