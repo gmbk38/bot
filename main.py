@@ -19,12 +19,12 @@ try:
     with conn.cursor() as req:
         query = "SELECT q AS question, a 'answer' FROM final_test;"
         req.execute(query)
-        row1= req.fetchone()
-        print (row1)
-        print (*row1, sep=' ')
-        row2 = req.fetchall()
-        print (row2)
-        print (*row2, sep=' ')
+        # row1= req.fetchone()
+        # print (row1)
+        # print (*row1, sep=' ')
+        # row2 = req.fetchall()
+        # print (row2)
+        # print (*row2, sep=' ')
 
         rows = req.fetchall()
         # print(rows) # Вывод всех данных БД в консоль при успешном подключении
@@ -33,6 +33,13 @@ try:
 except Exception as ex:
     print("BAD REQUEST")
     print(ex)
+
+mdb_row = []
+for element in rows:
+    mdb_row.append({element[0]: element[1]})
+
+print("------------------------------------------------")
+print (mdb_row)
 
 
 BOT_TOKEN = '5227789686:AAEAFMeHdqM7RnAC0FBujIrWuWGptuc-L2A'
