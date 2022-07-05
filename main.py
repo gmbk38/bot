@@ -36,7 +36,7 @@ except Exception as ex:
 
 mdb_row = []
 for element in rows:
-    mdb_row.append({element[0]: element[1]})
+    mdb_row.append({"question": element[0], "answer": element[1]})
 
 # print("------------------------------------------------")
 # print (mdb_row)
