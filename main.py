@@ -2,6 +2,7 @@ import telebot
 import mariadb
 from telebot import types # URL-кнопка
 from logs import User_log as ul
+from search import similarity as sim
 
 
 try:
@@ -47,7 +48,7 @@ rows = mdb_row
 BOT_TOKEN = '5227789686:AAEAFMeHdqM7RnAC0FBujIrWuWGptuc-L2A'
 bot = telebot.TeleBot(BOT_TOKEN)
 
-button_teg = 'Скидка_Бюджет_Оплата обучения_Льготы_Бакалавриат_Киберпанк_Цветы' #добавлять теги через '_'
+button_teg = 'Скидка_Бюджет_Оплата обучения_Льготы_Бакалавриат' #добавлять теги через '_'
 
 teg_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 teg_control = []
