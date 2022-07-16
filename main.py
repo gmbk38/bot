@@ -121,8 +121,8 @@ def answer_finder(message):
                  bot.send_message(message.chat.id, dict['question'])
         else:
             for dict in rows:
-                if status[:5].lower() in dict['question'].lower() or status[:5].lower() in dict['answer'].lower():
-                    bot.send_message(message.chat.id, dict['question'])
+                if (dict["id"] == status):
+                     bot.send_message(message.chat.id, dict['question'])
                 # Здесь по категории
 
     elif message.text in teg_control:
