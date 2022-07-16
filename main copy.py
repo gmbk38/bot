@@ -48,11 +48,7 @@ rows = mdb_row
 BOT_TOKEN = '5227789686:AAEAFMeHdqM7RnAC0FBujIrWuWGptuc-L2A'
 bot = telebot.TeleBot(BOT_TOKEN)
 
-button_teg = []
-
-for dict in rows:
-    if (dict["id"] not in button_teg):
-        button_teg.append(dict["id"])
+button_tag = 'Скидка_Бюджет_Оплата обучения_Льготы_Бакалавриат' #добавлять теги через '_'
 
 teg_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 teg_control = []
@@ -61,7 +57,7 @@ status_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True) #меню ст
 status_keyboard.add('Изменить категорию')
 status_keyboard.add('Вопросы по категории')
 
-for i in button_teg:
+for i in button_tag.split('_'):
     #заполняем меню тегов
     teg_control.append(i)
     teg_keyboard.add(i)
@@ -123,7 +119,6 @@ def answer_finder(message):
             for dict in rows:
                 if status[:5].lower() in dict['question'].lower() or status[:5].lower() in dict['answer'].lower():
                     bot.send_message(message.chat.id, dict['question'])
-                # Здесь по категории
 
     elif message.text in teg_control:
         for dict in rows:
@@ -133,17 +128,16 @@ def answer_finder(message):
                 bot.send_message(message.chat.id, dict['answer'])
 
     else:
-        # for dict in rows:
-        #     if message.text.lower() in dict['question'].lower():
-        #         # Проверяем совпадение сообщения с вопросами в БД
-        #         bot.send_message(message.chat.id, dict['answer'])
-        #         break
-        bot.send_message(message.chat.id, sim(message.text, rows))
-        # else:
-        #     # Ссылаемся на источник
-        #     keyboard = types.InlineKeyboardMarkup()
-        #     url_button = types.InlineKeyboardButton(text="Найти на сайте Финансового университета", url="http://www.fa.ru/Pages/Home.aspx")
-        #     keyboard.add(url_button)
-        #     bot.send_message(message.chat.id, "Затрудняюсь помочь тебе в этом вопросе...", reply_markup=keyboard)
+        for dict in rows:
+            if message.text.lower() in dict['question'].lower():
+                # Проверяем совпадение сообщения с вопросами в БД
+                bot.send_message(message.chat.id, dict['answer'])
+                break
+        else:
+            # Ссылаемся на источник
+            keyboard = types.InlineKeyboardMarkup()
+            url_button = types.InlineKeyboardButton(text="Найти на сайте Финансового университета", url="http://www.fa.ru/Pages/Home.aspx")
+            keyboard.add(url_button)
+            bot.send_message(message.chat.id, "Затрудняюсь помочь тебе в этом вопросе...", reply_markup=keyboard)
 
 bot.infinity_polling()
