@@ -114,8 +114,11 @@ def answer_finder(message):
     user.chat_record(message.text)
 
     if message.text == 'Изменить тег':
-        tag_change = 1
-        bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=tags_keyboard)
+        if category == "Не выбрана":
+            bot.send_message(message.chat.id, "Сперва измените категорию", reply_markup=status_keyboard)
+        else:
+            tag_change = 1
+            bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=tags_keyboard)
 
     if message.text == 'Изменить категорию':
         category_change = 1
