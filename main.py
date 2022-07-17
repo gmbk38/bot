@@ -119,7 +119,7 @@ def answer_finder(message):
             bot.send_message(message.chat.id, "Сперва измените категорию", reply_markup=status_keyboard)
         else:
             tags_keyboard = None
-            tags = None
+            tags = []
             tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 
             for dict in rows:
