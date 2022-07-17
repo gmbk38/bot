@@ -188,7 +188,7 @@ def answer_finder(message):
             for i in rows:
                 if(category == i["id"]):
                     new_answer_rows.append(i)
-            bot.send_message(message.chat.id, sim(message.text, rows))
+            bot.send_message(message.chat.id, sim(message.text, new_answer_rows))
         else:
             new_answer_rows = []
             for i in rows:
