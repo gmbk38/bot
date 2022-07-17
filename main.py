@@ -110,6 +110,8 @@ def answer_finder(message):
     global tag_change
     global category
     global tag
+    global tags
+    global tags_keyboard
 
     user.chat_record(message.text)
 
@@ -118,7 +120,14 @@ def answer_finder(message):
             bot.send_message(message.chat.id, "Сперва измените категорию", reply_markup=status_keyboard)
         else:
             tag_change = 1
-            bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=tags_keyboard)
+            tags = []
+            tags_keyboard = None
+            tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
+            for dict in rows:
+                if (dict["tag"] not in tags):
+                    tags.append(dict["tag"])
+                    tags_keyboard.add(dict["tag"])
+            bot.send_message(message.chat.id, "Режим изменения тега", reply_markup=tags_keyboard)
 
     elif message.text == 'Изменить категорию':
         category_change = 1
