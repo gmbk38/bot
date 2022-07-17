@@ -124,7 +124,7 @@ def answer_finder(message):
             tags_keyboard = None
             tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
             for dict in rows:
-                if (dict["tag"] not in tags):
+                if (dict["tag"] not in tags and dict("id") == catagory):
                     tags.append(dict["tag"])
                     tags_keyboard.add(dict["tag"])
             bot.send_message(message.chat.id, "Режим изменения тега", reply_markup=tags_keyboard)
