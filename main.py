@@ -52,6 +52,16 @@ bot = telebot.TeleBot(BOT_TOKEN)
 categories = ["Не выбрана"]
 tags = ["Не выбран"]
 
+# Заполняем массив категорий
+for dict in rows:
+    if (dict["id"] not in categories):
+        categories.append(dict["id"])
+
+# Заполняем массив тегов
+for dict in rows:
+    if (dict["tag"] not in tags):
+        tags.append(dict["tag"])
+
 categories_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню категорий
 tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
 
@@ -60,14 +70,13 @@ status_keyboard.add('Изменить тег')
 status_keyboard.add('Изменить категорию')
 status_keyboard.add('Вопросы по категории и тегу')
 
-# Заполняем массив категорий
-for dict in rows:
-    if (dict["id"] not in categories):
-        categories.append(dict["id"])
-
 for i in categories:
     #заполняем меню тегов
     categories_keyboard.add(i)
+
+for i in tags:
+    #заполняем меню тегов
+    tags_keyboard.add(i)
 
 pinned = None #закреплённое сообщение
 category_change = 0 # Флаг смены категории
@@ -75,19 +84,6 @@ tag_change = 0 # Флаг смены тега
 category = "Не выбрана"
 tag = "Не выбран"
 user = ul() #объявляем пользователя
-
-# Заполняем массив тегов
-def tags_update():
-    tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
-    if (tag == "Не выбран"):
-        return tags_keyboard
-    for dict in rows:
-        if (dict["tag"] not in tags and dict["id"] == category):
-            tags.append(dict["tag"])
-    for i in tags:
-    #заполняем меню тегов
-        tags_keyboard.add(i)
-    return tags_keyboard
 
 # Приветствие
 @bot.message_handler(commands=['start'])
@@ -130,7 +126,6 @@ def answer_finder(message):
 
     elif message.text in categories and category_change == 1:
         category_change = 0
-        tags_update()
         if category == message.text:
             bot.send_message(message.chat.id, "Вы выбрали ту же категорию", reply_markup=status_keyboard)
         else:    
