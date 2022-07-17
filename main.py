@@ -63,7 +63,7 @@ for dict in rows:
         tags.append(dict["tag"])
 
 categories_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню категорий
-tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
+# tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
 
 status_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True) # Меню статуса
 status_keyboard.add('Изменить тег')
@@ -77,19 +77,6 @@ for i in categories:
 for i in tags:
     #заполняем меню тегов
     tags_keyboard.add(i)
-
-def tags_update(cat):
-    global tags_keyboard
-    global tags
-    tags = None
-    tags_keyboard = None
-    tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    for dict in rows:
-        if (dict["id"] == cat and not dict["tag"] in tags):
-            tags.append(dict["tag"])
-            #заполняем меню тегов
-            tags_keyboard.add(dict["tag"])
-    return tags_keyboard
 
 pinned = None #закреплённое сообщение
 category_change = 0 # Флаг смены категории
@@ -123,6 +110,7 @@ def answer_finder(message):
     global tag_change
     global category
     global tag
+    global tags
 
     user.chat_record(message.text)
 
@@ -130,8 +118,20 @@ def answer_finder(message):
         if category == "Не выбрана":
             bot.send_message(message.chat.id, "Сперва измените категорию", reply_markup=status_keyboard)
         else:
+            tags_keyboard = None
+            tags = None
+            tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+
+            for dict in rows:
+                if (dict["tag"] not in tags and dict["id"] == category):
+                    tags.append(dict["tag"])
+
+            for i in tags:
+                #заполняем меню тегов
+                tags_keyboard.add(i)
+
             tag_change = 1
-            bot.send_message(message.chat.id, "Режим изменения тега", reply_markup=tags_update(category))
+            bot.send_message(message.chat.id, "Режим изменения тега", reply_markup=tags_keyboard)
 
     elif message.text == 'Изменить категорию':
         category_change = 1
