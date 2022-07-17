@@ -181,7 +181,8 @@ def answer_finder(message):
         #         bot.send_message(message.chat.id, dict['answer'])
         #         break
         if (category == "Не выбрана" or tag == "Не выбран"):
-            bot.send_message(message.chat.id, sim(message.text, rows))
+            # bot.send_message(message.chat.id, sim(message.text, rows))
+            bot.send_message(message.chat.id, "Выберите категорию и тег")
         elif (tag == "Не выбран"):
             new_answer_rows = []
             for i in rows:
