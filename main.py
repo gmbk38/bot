@@ -120,7 +120,7 @@ def answer_finder(message):
             tag_change = 1
             bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=tags_keyboard)
 
-    if message.text == 'Изменить категорию':
+    elif message.text == 'Изменить категорию':
         category_change = 1
         bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=categories_keyboard)
 
