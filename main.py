@@ -1,8 +1,8 @@
 import telebot
 import mariadb
 from telebot import types # URL-кнопка
-from logs import User_log as ul
-from search import similarity as sim
+from logs import User_log as ul # Класс пользователя
+from search import similarity as sim # Функция поиска
 
 
 try:
@@ -18,6 +18,7 @@ try:
     print("OK")
 
     with conn.cursor() as req:
+        # Запрос к БД
         query = "SELECT id, tag, q AS question, a 'answer' FROM final_test;"
         req.execute(query)
         # row1= req.fetchone()
@@ -35,6 +36,7 @@ except Exception as ex:
     print("BAD REQUEST")
     print(ex)
 
+# Массив словарей для MariaDB
 mdb_row = []
 for element in rows:
     mdb_row.append({"id": element[0], "tag": element[1], "question": element[2], "answer": element[3]})
@@ -44,31 +46,43 @@ for element in rows:
 
 rows = mdb_row
 
-
 BOT_TOKEN = '5227789686:AAEAFMeHdqM7RnAC0FBujIrWuWGptuc-L2A'
 bot = telebot.TeleBot(BOT_TOKEN)
 
-button_teg = []
+categories = ["Не выбрана"]
+tags = ["Не выбран"]
 
+# Заполняем массив категорий
 for dict in rows:
-    if (dict["id"] not in button_teg):
-        button_teg.append(dict["id"])
+    if (dict["id"] not in categories):
+        categories.append(dict["id"])
 
-teg_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-teg_control = []
+# Заполняем массив тегов
+for dict in rows:
+    if (dict["tag"] not in tags):
+        tags.append(dict["tag"])
 
-status_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True) #меню статуса
+categories_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню категорий
+tags_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True) # Меню тегов
+
+status_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True) # Меню статуса
+status_keyboard.add('Изменить тег')
 status_keyboard.add('Изменить категорию')
-status_keyboard.add('Вопросы по категории')
+status_keyboard.add('Вопросы по категории и тегу')
 
-for i in button_teg:
+for i in categories:
     #заполняем меню тегов
-    teg_control.append(i)
-    teg_keyboard.add(i)
+    categories_keyboard.append(i)
+
+for i in tags:
+    #заполняем меню тегов
+    tags_keyboard.append(i)
 
 pinned = None #закреплённое сообщение
-status_change = 0 #флаг смены статуса
-status = None
+category_change = 0 # Флаг смены категории
+tag_change = 0 # Флаг смены тега
+category = "Не выбрана"
+tag = "Не выбран"
 user = ul() #объявляем пользователя
 
 # Приветствие
@@ -77,7 +91,7 @@ def hello_msg(message):
 
     global pinned
     bot.send_message(message.chat.id, "Привет, " + message.from_user.first_name + ", чем могу помочь?" + '\n')
-    bot.send_message(message.chat.id, "Категория: Не выбрана")
+    bot.send_message(message.chat.id, f"Категория: {category} | Тег: {tag}")
     bot.send_message(message.chat.id, "Используй меню для изменения категории", reply_markup=status_keyboard)
     bot.pin_chat_message(message.chat.id,message.id+2)
     pinned = message.id+2 #закрепляем сообщение со статусом
@@ -92,45 +106,70 @@ def hello_msg(message):
 @bot.message_handler(content_types=['text'])
 def answer_finder(message):
 
-    global status_change
-    global status
+    global category_change
+    global tag_change
+    global category
+    global tag
 
     user.chat_record(message.text)
 
-    if message.text == 'Изменить категорию':
-        status_change = 1
-        bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=teg_keyboard)
+    if message.text == 'Изменить тег':
+        tag_change = 1
+        bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=tags_keyboard)
 
-    elif message.text in teg_control and status_change == 1:
-        status_change = 0
-        if status == message.text:
+    if message.text == 'Изменить категорию':
+        category_change = 1
+        bot.send_message(message.chat.id, "Режим изменения категории", reply_markup=categories_keyboard)
+
+    elif message.text in categories and category_change == 1:
+        category_change = 0
+        if category == message.text:
             bot.send_message(message.chat.id, "Вы выбрали ту же категорию", reply_markup=status_keyboard)
         else:    
             try:
-                status = message.text
-                bot.edit_message_text(chat_id=message.chat.id, message_id=pinned, text='Категория: ' + message.text)
+                category = message.text
+                tag = "Не выбран"
+                bot.edit_message_text(chat_id=message.chat.id, message_id=pinned, text=f"Категория: {category} | Тег: {tag}")
                 bot.send_message(message.chat.id, "Категория изменена", reply_markup=status_keyboard)
             except Exception as ex:
                 user.err_record(ex)
                 bot.send_message(message.chat.id, "Вышло обновление бота. Перезапустить - /start")
 
-    elif message.text == 'Вопросы по категории':
-        if status == None:
+    elif message.text in tags and tag_change == 1:
+        tag_change = 0
+        if tag == message.text:
+            bot.send_message(message.chat.id, "Вы выбрали тот же тэг", reply_markup=status_keyboard)
+        else:    
+            try:
+                tag = message.text
+                bot.edit_message_text(chat_id=message.chat.id, message_id=pinned, text=f"Категория: {category} | Тег: {tag}")
+                bot.send_message(message.chat.id, "Тег изменён", reply_markup=status_keyboard)
+            except Exception as ex:
+                user.err_record(ex)
+                bot.send_message(message.chat.id, "Вышло обновление бота. Перезапустить - /start")
+
+    elif message.text == 'Вопросы по категории и тегу':
+        if category == "Не выбрана":
              bot.send_message(message.chat.id, "Категория не выбрана")
              for dict in rows:
                  bot.send_message(message.chat.id, dict['question'])
+        elif tag == "Не выбран":
+            for dict in rows:
+                if (dict["id"] == category):
+                     bot.send_message(message.chat.id, dict['question'])
+                # Здесь по категории
         else:
             for dict in rows:
-                if (dict["id"] == status):
+                if (dict["id"] == category and dict["tag"] == tag):
                      bot.send_message(message.chat.id, dict['question'])
                 # Здесь по категории
 
-    elif message.text in teg_control:
-        for dict in rows:
-            # dict = {v:k for k, v in dict.items()} # Смена ключа/значения
-            if message.text[:5].lower() in dict['question'].lower() or message.text[:5].lower() in dict['answer'].lower(): #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Добавить если есть в кнопках
-                # Проверяем совпадение сообщения с вопросами в БД (Вывод всей информации по слову)
-                bot.send_message(message.chat.id, dict['answer'])
+    # elif message.text in button_tag:
+    #     for dict in rows:
+    #         # dict = {v:k for k, v in dict.items()} # Смена ключа/значения
+    #         if message.text[:5].lower() in dict['question'].lower() or message.text[:5].lower() in dict['answer'].lower(): #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Добавить если есть в кнопках
+    #             # Проверяем совпадение сообщения с вопросами в БД (Вывод всей информации по слову)
+    #             bot.send_message(message.chat.id, dict['answer'])
 
     else:
         # for dict in rows:
@@ -138,7 +177,21 @@ def answer_finder(message):
         #         # Проверяем совпадение сообщения с вопросами в БД
         #         bot.send_message(message.chat.id, dict['answer'])
         #         break
-        bot.send_message(message.chat.id, sim(message.text, rows))
+        if (category == "Не выбрана" or tag == "Не выбран"):
+            bot.send_message(message.chat.id, sim(message.text, rows))
+        elif (tag == "Не выбран"):
+            new_answer_rows = []
+            for i in rows:
+                if(category == i["id"]):
+                    new_answer_rows.append(i)
+            bot.send_message(message.chat.id, sim(message.text, rows))
+        else:
+            new_answer_rows = []
+            for i in rows:
+                if(category == i["id"] and tag == i["tag"]):
+                    new_answer_rows.append(i)
+            bot.send_message(message.chat.id, sim(message.text, new_answer_rows))
+                    
         # else:
         #     # Ссылаемся на источник
         #     keyboard = types.InlineKeyboardMarkup()
