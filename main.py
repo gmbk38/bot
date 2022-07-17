@@ -72,11 +72,11 @@ status_keyboard.add('Вопросы по категории и тегу')
 
 for i in categories:
     #заполняем меню тегов
-    categories_keyboard.append(i)
+    categories_keyboard.add(i)
 
 for i in tags:
     #заполняем меню тегов
-    tags_keyboard.append(i)
+    tags_keyboard.add(i)
 
 pinned = None #закреплённое сообщение
 category_change = 0 # Флаг смены категории
