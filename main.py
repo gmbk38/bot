@@ -130,9 +130,8 @@ def answer_finder(message):
         if category == "Не выбрана":
             bot.send_message(message.chat.id, "Сперва измените категорию", reply_markup=status_keyboard)
         else:
-            tags_update(category)
             tag_change = 1
-            bot.send_message(message.chat.id, "Режим изменения тега", reply_markup=tags_keyboard)
+            bot.send_message(message.chat.id, "Режим изменения тега", reply_markup=tags_update(category))
 
     elif message.text == 'Изменить категорию':
         category_change = 1
