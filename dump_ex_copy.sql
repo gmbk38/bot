@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `final_test`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `final_test` (
-  `id` varchar(1000) DEFAULT NULL,
-  `tag` varchar(1000) DEFAULT NULL,
-  `q` varchar(1000) DEFAULT NULL,
-  `a` varchar(1000) DEFAULT NULL
+  `id` varchar(100) DEFAULT NULL,
+  `tag` varchar(100) DEFAULT NULL,
+  `q` varchar(2000) DEFAULT NULL,
+  `a` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
