@@ -26,7 +26,7 @@ CREATE TABLE `final_test` (
   `id` varchar(100) DEFAULT NULL,
   `tag` varchar(100) DEFAULT NULL,
   `q` varchar(2000) DEFAULT NULL,
-  `a` varchar(2000) DEFAULT NULL
+  `a` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
