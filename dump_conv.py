@@ -1,6 +1,6 @@
 import pandas
 
-excel_data_df = pandas.read_excel('new data 3.xlsx', sheet_name='БД Бак')
+excel_data_df = pandas.read_excel('new data 3.xlsx', sheet_name='БД Соц жизнь')
 
 # print(excel_data_df)
 
