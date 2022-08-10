@@ -17,4 +17,4 @@ def similarity(text, info):
 #   print(f"|||{que}||| имеет {int(que_similarity*100)}% совпадение с вопросом")
 #   return matcher.ratio()
     # return ans
-    return que
+    return ans
