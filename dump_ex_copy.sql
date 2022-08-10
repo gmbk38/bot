@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `final_test`;
 CREATE TABLE `final_test` (
   `id` varchar(200) DEFAULT NULL,
   `tag` varchar(200) DEFAULT NULL,
-  `q` text(20000) DEFAULT NULL,
-  `a` text(20000) DEFAULT NULL
+  `q` text() DEFAULT NULL,
+  `a` text() DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
