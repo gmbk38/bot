@@ -34,6 +34,9 @@ body {
     transform: translateX(-50%);
 
     background-color: var(--bg-light);
+
+    transition: .8s;
+    overflow-y: hidden;
 }
 
 .sort > div {
@@ -277,4 +280,40 @@ body {
 
 .db tr:hover {
   background: var(--light-fade);
+}
+
+#tth2 {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 70vw;
+  height: 0vh;
+  padding: 1.5vw;
+  border-radius: 2ch;
+  opacity: 0;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: var(--light-fade);
+
+  transition: .8s;
+  overflow-y: hidden;
+}
+
+/* КОСТЫЛЬ ------------------------------------------ */
+
+#tth2 h2 {
+  margin: 0;
+  padding: 8px;
+  font-size: 18px;
+
+  color: var(--headline);
+  text-align: center;
+
+  border-radius: 1ch;
+
+  background-color: var(--bg-ultra-light);
+  /* border: 2px solid green; */
 }
