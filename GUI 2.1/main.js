@@ -1,6 +1,6 @@
 
 
-const button = document.getElementById("eee");
+const button = document.getElementById("hide_btn");
 var flag = false;
 
 var sort = document.getElementsByClassName("sort");
@@ -11,8 +11,12 @@ button.addEventListener("click", e => {
     document.getElementById("try_to_hide").style.height = 0 + "vh";
     document.getElementById("try_to_hide").style.width = 0 + "vw";
     document.getElementById("try_to_hide").style.marginTop = 0;
-    document.getElementById("try_to_hide").style.left = 10 + "vw";
+    document.getElementById("try_to_hide").style.left = 13.5 + "vw";
     document.getElementById("try_to_hide").style.padding = 0;
+
+    document.getElementById("left").style.left = 2.5 + "px";
+    document.getElementById("right").style.left = 7.5 + "px";
+    // Меняем верхние 2 местами
   } else {
     flag = false;
     document.getElementById("try_to_hide").style.height = 40 + "vh";
@@ -20,6 +24,10 @@ button.addEventListener("click", e => {
     document.getElementById("try_to_hide").style.marginTop = 1.5 + "%";
     document.getElementById("try_to_hide").style.left = 50 + "%";
     document.getElementById("try_to_hide").style.padding = 1.5 + "vw";
+
+    document.getElementById("left").style.left = 7 + "px";
+    document.getElementById("right").style.left = 3 + "px";
+    // С этими
   }
 //   document.getElementById("try_to_hide").style.display = "none";
 });
