@@ -14,7 +14,7 @@ def similarity(text, info):
         print(f"{round(matcher.ratio(), 5)} ------ {point}")
         print("------------------------------------------------------------")
 
-    print(f"|||{que}||| имеет {int(que_similarity*100)}% совпадение с вопросом")
+    print(f"Ваш вопрос имеет {int(que_similarity*100)}% совпадение с вопросом '{que}'")
 #   return matcher.ratio()
     return ans
 
@@ -24,6 +24,6 @@ info = [
 {"question": "Что входит в портфолио (бакалавриат)", "answer": "3 вопрос"}
 ]
 
-text = "что а у ээээ порфолио магистры"
+text = "что же там, ну порфолио магистры"
 
-print(similarity(text, info))
+print(f'Ответ --- {similarity(text, info)}')

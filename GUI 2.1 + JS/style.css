@@ -9,6 +9,7 @@ body {
     --border: #0056c7;
     --main-bg: white;
     --table-text: black;
+    --red-btn: #a00000;
 
     --dark-fade: linear-gradient(90deg, var(--headline), var(--text));
     --light-fade: linear-gradient(90deg, var(--headline), var(--border));
@@ -463,15 +464,14 @@ input:checked + .slider:before {
   border-radius: 1ch;
 }
 
-#edit_text button {
+#edit_text #upd_btn {
   position: relative;
 
   border-radius: 1ch;
   padding: 0.5vw;
 
-  left: 50%;
-
-  transform: translate(-50%);
+  margin-right: 5px;
+  width: 100px;
 
   color: var(--table-text);
 
@@ -482,6 +482,50 @@ input:checked + .slider:before {
 }
 
 #edit_text div:nth-child(2) {
+  display: inline-block;
+  position: relative;
+
   margin-top: 1.5vw;
+  left: 50%;
+
+  transform: translate(-50%);
+}
+
+#delete_btn {
+  position: relative;
+
+  border-radius: 1ch;
+  padding: 0.5vw;
+
+  margin-right: 5px;
+  width: 100px;
+
+  color: white;
+
+  border: none;
+  background-color: var(--red-btn);
+
+  transition: .4s;
+}
+
+#delete_btn:hover {
+  /* cursor: not-allowed; */
+  background-color: #600000;
+}
+
+.edit p {
+  display: block;
+  position: relative;
+
+  text-align: center;
+
+  margin: 0;
+  color: var(--red-btn);
+
   /* border: 2px solid red; */
+}
+
+#MyAlert {
+  display: none;
+  margin-top: 1.5%;
 }

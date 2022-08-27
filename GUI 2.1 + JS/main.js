@@ -19,7 +19,7 @@ button.addEventListener("click", e => {
     // Меняем верхние 2 местами
   } else {
     flag = false;
-    document.getElementById("try_to_hide").style.height = 40 + "vh";
+    document.getElementById("try_to_hide").style.height = 25 + "vh";
     document.getElementById("try_to_hide").style.width = 70 + "vw";
     document.getElementById("try_to_hide").style.marginTop = 1.5 + "%";
     document.getElementById("try_to_hide").style.left = 50 + "%";
@@ -46,6 +46,7 @@ const checkbox = document.getElementById("theme");
 // --border: #0056c7;
 // --main-bg: white;
 // --table-text: black;
+// --red-btn: #a00000;
 
 // --dark-fade: linear-gradient(90deg, var(--headline), var(--text));
 // --light-fade: linear-gradient(90deg, var(--headline), var(--border));
@@ -286,6 +287,59 @@ var last_index = -1;
 var selected_cells = [];
 
 $( "tr" ).each(function(index) {
+  // click dblclick ========================================
+$(this).on("dblclick", function(){
+  // console.log(index);
+  if (last_index != -1) {
+// ======================================
+$( "tr" ).eq(last_index).css( "background" , "none");
+    $( "tr" ).eq(last_index).css( "background-color", "var(--bg-ultra-light)");
+    $(this).css( "background", "var(--light-fade)");
+    last_index = index;
+    tr = document.getElementsByTagName("tr");
+    tr = tr[index];
+    td = tr.getElementsByTagName("td");
+    selected_cells["id"] = td[0].innerText || td[0].textContent;
+    selected_cells["tag"] = td[1].innerText || td[1].textContent;
+    selected_cells["q"] = td[2].innerText || td[2].textContent;
+    selected_cells["a"] = td[3].innerText || td[3].textContent;
+    // console.log(selected_cells);
+    $( "#tid" ).val(selected_cells["id"]);
+    $( "#ttag" ).val(selected_cells["tag"]);
+    $( "#tq" ).val(selected_cells["q"]);
+    $( "#ta" ).val(selected_cells["a"]);
+    $("#delete_btn").css("display", "inline-block");
+    $(".edit").css("display", "block");
+
+  } else {
+    $(this).css( "background", "var(--light-fade)");
+    last_index = index;
+    tr = document.getElementsByTagName("tr");
+    tr = tr[index];
+    td = tr.getElementsByTagName("td");
+    selected_cells["id"] = td[0].innerText || td[0].textContent;
+    selected_cells["tag"] = td[1].innerText || td[1].textContent;
+    selected_cells["q"] = td[2].innerText || td[2].textContent;
+    selected_cells["a"] = td[3].innerText || td[3].textContent;
+    // console.log(selected_cells);
+    $( "#tid" ).val(selected_cells["id"]);
+    $( "#ttag" ).val(selected_cells["tag"]);
+    $( "#tq" ).val(selected_cells["q"]);
+    $( "#ta" ).val(selected_cells["a"]);
+    $("#delete_btn").css("display", "inline-block");
+    $(".edit").css("display", "block");
+  }
+
+});
+});
+
+
+// ==
+// ==
+// ==
+
+$( "tr" ).each(function(index) {
+  // click dblclick ========================================
 $(this).on("click", function(){
   // console.log(index);
   if (last_index != -1) {
@@ -306,7 +360,6 @@ $( "tr" ).eq(last_index).css( "background" , "none");
     $( "#ttag" ).val(selected_cells["tag"]);
     $( "#tq" ).val(selected_cells["q"]);
     $( "#ta" ).val(selected_cells["a"]);
-    $(".edit").css("display", "block");
 
   } else {
     $(this).css( "background", "var(--light-fade)");
@@ -323,15 +376,66 @@ $( "tr" ).eq(last_index).css( "background" , "none");
     $( "#ttag" ).val(selected_cells["tag"]);
     $( "#tq" ).val(selected_cells["q"]);
     $( "#ta" ).val(selected_cells["a"]);
-    $(".edit").css("display", "block");
   }
 
 });
 });
 
-function upd_for_new_tr() {
-  
+// ==
+// ==
+// ==
   $( "tr" ).each(function(index) {
+    $(this).on("dblclick", function(){
+      // console.log(index);
+      if (last_index != -1) {
+    // ======================================
+    $( "tr" ).eq(last_index).css( "background" , "none");
+        $( "tr" ).eq(last_index).css( "background-color", "var(--bg-ultra-light)");
+        $(this).css( "background", "var(--light-fade)");
+        last_index = index;
+        tr = document.getElementsByTagName("tr");
+        tr = tr[index];
+        td = tr.getElementsByTagName("td");
+        selected_cells["id"] = td[0].innerText || td[0].textContent;
+        selected_cells["tag"] = td[1].innerText || td[1].textContent;
+        selected_cells["q"] = td[2].innerText || td[2].textContent;
+        selected_cells["a"] = td[3].innerText || td[3].textContent;
+        // console.log(selected_cells);
+        $( "#tid" ).val(selected_cells["id"]);
+        $( "#ttag" ).val(selected_cells["tag"]);
+        $( "#tq" ).val(selected_cells["q"]);
+        $( "#ta" ).val(selected_cells["a"]);
+        $("#delete_btn").css("display", "inline-block");
+        $(".edit").css("display", "block");
+    
+      } else {
+        $(this).css( "background", "var(--light-fade)");
+        last_index = index;
+        tr = document.getElementsByTagName("tr");
+        tr = tr[index];
+        td = tr.getElementsByTagName("td");
+        selected_cells["id"] = td[0].innerText || td[0].textContent;
+        selected_cells["tag"] = td[1].innerText || td[1].textContent;
+        selected_cells["q"] = td[2].innerText || td[2].textContent;
+        selected_cells["a"] = td[3].innerText || td[3].textContent;
+        // console.log(selected_cells);
+        $( "#tid" ).val(selected_cells["id"]);
+        $( "#ttag" ).val(selected_cells["tag"]);
+        $( "#tq" ).val(selected_cells["q"]);
+        $( "#ta" ).val(selected_cells["a"]);
+        $("#delete_btn").css("display", "inline-block");
+        $(".edit").css("display", "block");
+      }
+    
+    });
+    });
+
+    // ==
+    // ==
+    // ==
+
+    $( "tr" ).each(function(index) {
+      // click dblclick ========================================
     $(this).on("click", function(){
       // console.log(index);
       if (last_index != -1) {
@@ -352,6 +456,51 @@ function upd_for_new_tr() {
         $( "#ttag" ).val(selected_cells["tag"]);
         $( "#tq" ).val(selected_cells["q"]);
         $( "#ta" ).val(selected_cells["a"]);
+    
+      } else {
+        $(this).css( "background", "var(--light-fade)");
+        last_index = index;
+        tr = document.getElementsByTagName("tr");
+        tr = tr[index];
+        td = tr.getElementsByTagName("td");
+        selected_cells["id"] = td[0].innerText || td[0].textContent;
+        selected_cells["tag"] = td[1].innerText || td[1].textContent;
+        selected_cells["q"] = td[2].innerText || td[2].textContent;
+        selected_cells["a"] = td[3].innerText || td[3].textContent;
+        // console.log(selected_cells);
+        $( "#tid" ).val(selected_cells["id"]);
+        $( "#ttag" ).val(selected_cells["tag"]);
+        $( "#tq" ).val(selected_cells["q"]);
+        $( "#ta" ).val(selected_cells["a"]);
+      }
+    
+    });
+    });
+
+function upd_for_new_tr() {
+  
+  $( "tr" ).each(function(index) {
+    $(this).on("dblclick", function(){
+      // console.log(index);
+      if (last_index != -1) {
+    // ======================================
+    $( "tr" ).eq(last_index).css( "background" , "none");
+        $( "tr" ).eq(last_index).css( "background-color", "var(--bg-ultra-light)");
+        $(this).css( "background", "var(--light-fade)");
+        last_index = index;
+        tr = document.getElementsByTagName("tr");
+        tr = tr[index];
+        td = tr.getElementsByTagName("td");
+        selected_cells["id"] = td[0].innerText || td[0].textContent;
+        selected_cells["tag"] = td[1].innerText || td[1].textContent;
+        selected_cells["q"] = td[2].innerText || td[2].textContent;
+        selected_cells["a"] = td[3].innerText || td[3].textContent;
+        // console.log(selected_cells);
+        $( "#tid" ).val(selected_cells["id"]);
+        $( "#ttag" ).val(selected_cells["tag"]);
+        $( "#tq" ).val(selected_cells["q"]);
+        $( "#ta" ).val(selected_cells["a"]);
+        $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
     
       } else {
@@ -369,7 +518,55 @@ function upd_for_new_tr() {
         $( "#ttag" ).val(selected_cells["tag"]);
         $( "#tq" ).val(selected_cells["q"]);
         $( "#ta" ).val(selected_cells["a"]);
+        $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
+      }
+    
+    });
+    });
+
+    // ==
+    // ==
+    // ==
+
+    $( "tr" ).each(function(index) {
+      // click dblclick ========================================
+    $(this).on("click", function(){
+      // console.log(index);
+      if (last_index != -1) {
+    // ======================================
+    $( "tr" ).eq(last_index).css( "background" , "none");
+        $( "tr" ).eq(last_index).css( "background-color", "var(--bg-ultra-light)");
+        $(this).css( "background", "var(--light-fade)");
+        last_index = index;
+        tr = document.getElementsByTagName("tr");
+        tr = tr[index];
+        td = tr.getElementsByTagName("td");
+        selected_cells["id"] = td[0].innerText || td[0].textContent;
+        selected_cells["tag"] = td[1].innerText || td[1].textContent;
+        selected_cells["q"] = td[2].innerText || td[2].textContent;
+        selected_cells["a"] = td[3].innerText || td[3].textContent;
+        // console.log(selected_cells);
+        $( "#tid" ).val(selected_cells["id"]);
+        $( "#ttag" ).val(selected_cells["tag"]);
+        $( "#tq" ).val(selected_cells["q"]);
+        $( "#ta" ).val(selected_cells["a"]);
+    
+      } else {
+        $(this).css( "background", "var(--light-fade)");
+        last_index = index;
+        tr = document.getElementsByTagName("tr");
+        tr = tr[index];
+        td = tr.getElementsByTagName("td");
+        selected_cells["id"] = td[0].innerText || td[0].textContent;
+        selected_cells["tag"] = td[1].innerText || td[1].textContent;
+        selected_cells["q"] = td[2].innerText || td[2].textContent;
+        selected_cells["a"] = td[3].innerText || td[3].textContent;
+        // console.log(selected_cells);
+        $( "#tid" ).val(selected_cells["id"]);
+        $( "#ttag" ).val(selected_cells["tag"]);
+        $( "#tq" ).val(selected_cells["q"]);
+        $( "#ta" ).val(selected_cells["a"]);
       }
     
     });
@@ -394,6 +591,7 @@ $( "#edit_btn" ).click(function() {
   $( "#ttag" ).val("");
   $( "#tq" ).val("");
   $( "#ta" ).val("");
+  $("#delete_btn").css("display", "none");
   $(".edit").css("display", "block");
   mark_upd = true;
 });
@@ -420,5 +618,19 @@ $( "#upd_btn" ).click(function() {
   td[2].innerText =$("#tq").val();
   td[3].innerText =$("#ta").val();
   $(".edit").css("display", "none");
+  }
+});
+
+var delete_flag = 0;
+
+$( "#delete_btn" ).click(function() {
+  if (delete_flag == 0) {
+    delete_flag++;
+    $("#MyAlert").css("display", "block");
+  } else {
+    delete_flag = 0;
+    $("tr").eq(last_index).css("display", "none");
+    $("#MyAlert").css("display", "none");
+    $(".edit").css("display", "none");
   }
 });
