@@ -9,5 +9,4 @@ $result = mysql_query("SELECT * FROM final_test");
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
     printf("ID: %s  Name: %s <br>", $row[0], $row[1]);
 }
-printf($row)
 ?>
