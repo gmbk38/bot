@@ -19,7 +19,7 @@ $row = $result -> fetch_all(MYSQLI_ASSOC);
 
 for ($i = 0; $i < count($row); $i++) {
     $e = $row[$i];
-    printf ("%s                    %s                    %s                    %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
+    printf ("%s &nbsp;&nbsp;&nbsp;&nbsp; %s &nbsp;&nbsp;&nbsp;&nbsp; %s &nbsp;&nbsp;&nbsp;&nbsp; %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
     echo "<br>";
     echo "<br>";
     echo "<br>";
