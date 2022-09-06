@@ -13,7 +13,7 @@ $sql = "SELECT * FROM `final_test`;";
 $result = $mysqli -> query($sql);
 
 
-$row = $result -> fetch_array(MYSQLI_ASSOC);
+$row = $result -> fetch_all(MYSQLI_ASSOC);
 printf ("%s (%s)\n", $row["id"], $row["tag"]);
 printf ($row[1]);
 
