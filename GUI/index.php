@@ -14,6 +14,7 @@ $result = $mysqli -> query($sql);
 
 
 $row = $result -> fetch_array(MYSQLI_ASSOC);
+printf($row);
 printf ("%s (%s)\n", $row["id"], $row["tag"]);
 
 // Free result set
