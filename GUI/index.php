@@ -1,9 +1,11 @@
 <?php
-$dbhost = "localhost:3306";
-$dbuser = "root";
-$dbpass = "Gorizont22";
-$db = "test";
-$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
-  
-echo($conn);
+$mysqli = new mysqli("localhost:3306","root","Gorizont22","test");
+
+// Check connection
+if ($mysqli -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+} else {
+    echo "OK";
+}
 ?>
