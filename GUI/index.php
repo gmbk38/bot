@@ -14,12 +14,13 @@ $result = $mysqli -> query($sql);
 
 
 $row = $result -> fetch_all(MYSQLI_ASSOC);
-printf ("%s (%s)\n", $row["id"], $row["tag"]);
-printf ($row[1]);
+// printf ("%s (%s)\n", $row["id"], $row["tag"]);
+// printf ($row[1]);
 
-// for ($i = 0; $i < count($row); $i++) {
-//     $row[$i];
-// }
+for ($i = 0; $i < count($row); $i++) {
+    $e = $row[$i];
+    printf ("%s (%s) (%s) (%s)\n", $e["id"], $e["tag"], $e["question"], $e["answer"]);
+}
 
 // Free result set
 $result -> free_result();
