@@ -19,10 +19,28 @@ $row = $result -> fetch_all(MYSQLI_ASSOC);
 
 for ($i = 0; $i < count($row); $i++) {
     $e = $row[$i];
-    printf ("%s %s %s %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
+    printf ("%s                    %s                    %s                    %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
     echo "<br>";
     echo "<br>";
     echo "<br>";
+}
+
+function table_load() {
+    return $row;
+}
+
+function table_upd() {
+    $mysqli = new mysqli("localhost","gui","gui123","test");
+
+    // $sql = "SELECT * FROM `final_test`;";
+    $result = $mysqli -> query($sql);
+
+    $mysqli -> close();
+    echo "OK";
+}
+
+function table_remove() {
+    return $row;
 }
 
 // Free result set
