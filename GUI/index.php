@@ -21,6 +21,8 @@ for ($i = 0; $i < count($row); $i++) {
     $e = $row[$i];
     printf ("%s %s %s %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
     echo "<br>";
+    echo "<br>";
+    echo "<br>";
 }
 
 // Free result set
