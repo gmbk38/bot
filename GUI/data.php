@@ -1,11 +1,3 @@
-<html>
-<head>
-<title>Test PHP Connection Script</title>
-</head>
-<body>
-
-<h3>Welcome to the PHP Connect Test</h3>
-
 <?php
 $dbname = 'test';
 $dbuser = 'root';
@@ -18,6 +10,3 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
     printf("ID: %s  Name: %s <br>", $row[0], $row[1]);
 }
 ?>
-
-</body>
-</html>
