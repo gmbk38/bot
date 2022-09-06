@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost","root","Gorizont22","test");
+$mysqli = new mysqli("localhost","gui","gui123","test");
 
 // Check connection
 if ($mysqli -> connect_errno) {
