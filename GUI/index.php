@@ -9,6 +9,8 @@ function OpenCon()
  
  return $conn;
  }
+
+ echo($conn);
  
 function CloseCon($conn)
  {
