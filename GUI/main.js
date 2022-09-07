@@ -632,5 +632,3 @@ $( "#delete_btn" ).click(function() {
     $(".edit").css("display", "none");
   }
 });
-
-$( "#testforjs" ).val(123);
