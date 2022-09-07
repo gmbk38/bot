@@ -51,6 +51,11 @@ function table_remove() {
 $result -> free_result();
 
 $mysqli -> close();
+
+if (isset($_POST["test123"])) {
+    $login = $_POST["test"];
+    alert($login);
+}
 ?>
 
 <!-- #! /bin/sh

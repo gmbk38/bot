@@ -617,6 +617,7 @@ $( "#upd_btn" ).click(function() {
   td[3].innerText =$("#ta").val();
   $(".edit").css("display", "none");
   }
+  $( "#testforjs" ).val(selected_cells);
 });
 
 var delete_flag = 0;
@@ -631,14 +632,4 @@ $( "#delete_btn" ).click(function() {
     $("#MyAlert").css("display", "none");
     $(".edit").css("display", "none");
   }
-
-  $.ajax({
-      type: "POST",
-      url: "data.php",
-      data: selected_cells,
-      success: function(data){
-          $('#load').fadeOut();
-          $('#ShowResult').html(data);
-      }
-  });
 });
