@@ -12,3 +12,7 @@ function test(){
          }
       );``
 }
+
+function test123(){
+    alert("норм");
+}

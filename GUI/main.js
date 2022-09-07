@@ -1,5 +1,5 @@
-import test from 'db.js';
-test();
+import {test123} from 'db.js';
+test123();
 
 const button = document.getElementById("hide_btn");
 var flag = false;
