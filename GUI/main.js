@@ -617,7 +617,6 @@ $( "#upd_btn" ).click(function() {
   td[3].innerText =$("#ta").val();
   $(".edit").css("display", "none");
   }
-  $( "#testforjs" ).val(selected_cells);
 });
 
 var delete_flag = 0;
@@ -633,3 +632,5 @@ $( "#delete_btn" ).click(function() {
     $(".edit").css("display", "none");
   }
 });
+
+$( "#testforjs" ).val(123);
