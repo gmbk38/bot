@@ -1,6 +1,3 @@
-import {test123} from 'db.js';
-test123();
-
 const button = document.getElementById("hide_btn");
 var flag = false;
 
@@ -634,4 +631,14 @@ $( "#delete_btn" ).click(function() {
     $("#MyAlert").css("display", "none");
     $(".edit").css("display", "none");
   }
+
+  $.ajax({
+      type: "POST",
+      url: "data.php",
+      data: selected_cells,
+      success: function(data){
+          $('#load').fadeOut();
+          $('#ShowResult').html(data);
+      }
+  });
 });
