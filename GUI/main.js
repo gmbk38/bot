@@ -1,4 +1,5 @@
-
+import test from 'db.js';
+test();
 
 const button = document.getElementById("hide_btn");
 var flag = false;
