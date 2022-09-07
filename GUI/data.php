@@ -54,7 +54,9 @@ $mysqli -> close();
 
 if (isset($_POST["test123"])) {
     $login = $_POST["test"];
-    alert($login);
+    printf(49355043549);
+    printf($login);
+    printf(49355043549);
 }
 ?>
 
