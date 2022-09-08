@@ -1,4 +1,19 @@
-import { update } from "./db_func.js";
+function update(selected_cells, updated_cells) {
+  $.post("update.php",
+  {
+    exid : selected_cells["id"],
+    id : updated_cells["id"],
+    extag : selected_cells["tag"],
+    tag : updated_cells["tag"],
+    exq : selected_cells["q"],
+    q : updated_cells["q"],
+    exa : selected_cells["a"],
+    a : updated_cells["a"],
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+}
 
 const button = document.getElementById("hide_btn");
 var flag = false;
