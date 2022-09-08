@@ -688,7 +688,6 @@ $(document).ready(function() {
 });
 
 function update(selected_cells, updated_cells) {
-  console.log(el);
   $.post("update copy.php",
   {
     test : selected_cells["id"],
