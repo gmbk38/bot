@@ -635,13 +635,10 @@ $( "#delete_btn" ).click(function() {
 
 $(document).ready(function() {
   main_data = [];
-  setTimeout(
-    function() 
-    {
-      $("#data_load").each(function() {
-        main_data.push($(this).val());
-      });
-    }, 5000);
+  $("#data_load").each(function(index) {
+    console.log(index);
+    main_data.push($(this).val());
+  });
   // for (data in php_row) {
   //   console.log(data);
   //   $("tr").last().after(
