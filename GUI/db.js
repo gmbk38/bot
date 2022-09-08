@@ -13,6 +13,8 @@ function test(){
       );``
 }
 
+var arr = [1,2,3,4,5];
+
 $(document).ready(function() {
   $('#testbtn').click(function() {
       var data_my = $('#textfield').val();
@@ -20,6 +22,7 @@ $(document).ready(function() {
       $.post("new.php",
       {
         test: data_my,
+        el : arr,
       },
       function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
