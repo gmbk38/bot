@@ -641,6 +641,7 @@ $(document).ready(function() {
       element = String(element);
       element = element.split("_");
       main_data.push(element);
+      $(this).remove();
     };
   });
   for (var i = 0; i < main_data.length; i++) {
