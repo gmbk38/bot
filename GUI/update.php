@@ -15,10 +15,10 @@ if ($mysqli -> connect_errno) {
   exit();
 }
 
-alert("data upd")
+alert("data upd");
 $sql = "UPDATE `final_test` SET id = $id, tag = $tag, q = $q, a = $a WHERE id = $exid, tag = $extag, q = $exq, a = $exa;";
 $result = $mysqli -> query($sql);
-alert("success data upd")
+alert("success data upd");
 
 $row = $result -> fetch_all(MYSQLI_ASSOC);
 
