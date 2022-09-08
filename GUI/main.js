@@ -654,4 +654,14 @@ $(document).ready(function() {
   //     "</tr>"
   //   );
   // };
+    for (var i = 0; i < 2; i++) {
+    $("tr").last().after(
+      "<tr>" +
+        "<td>" + main_data[i][0] + " </td> " +
+        "<td>" + main_data[i][1] + " </td> " +
+        "<td>" + main_data[i][2] + " </td> " +
+        "<td>" + main_data[i][3] + " </td> " +
+      "</tr>"
+    );
+  };
 });
