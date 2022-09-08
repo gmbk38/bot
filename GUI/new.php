@@ -15,7 +15,7 @@ foreach ($el as $i) {
     echo("       ");
 }
 
-if (isset($_POST['el'])) {
+if (isset($_POST['extra'])) {
     echo("ISSET");
 }
 ?>
