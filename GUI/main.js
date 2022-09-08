@@ -15,18 +15,6 @@ function update1(selected_cells, updated_cells) {
   });
 }
 
-function update(selected_cells, updated_cells) {
-  var el = selected_cells[0];
-  console.log(el);
-  $.post("update copy.php",
-  {
-    test : el,
-  },
-  function(data, status){
-    alert("Data: " + data + "\nStatus: " + status);
-  });
-}
-
 const button = document.getElementById("hide_btn");
 var flag = false;
 
@@ -699,3 +687,13 @@ $(document).ready(function() {
   upd_for_new_tr();
 });
 
+function update(selected_cells, updated_cells) {
+  console.log(el);
+  $.post("update copy.php",
+  {
+    test : selected_cells[0],
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+}
