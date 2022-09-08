@@ -17,6 +17,16 @@ if ($mysqli -> connect_errno) {
 
 // $sql = "UPDATE `final_test` SET id = '$id', tag = '$tag', q = '$q', a = '$a' WHERE (id = '$exid' AND tag = '$extag' AND q = '$exq' AND a = '$exa');";
 
+echo($id);
+echo($tag);
+echo($q);
+echo($a);
+echo($exid);
+echo($extag);
+echo($exq);
+echo($exa);
+
+
 $sql = "SELECT * FROM `final_test` WHERE a = '$exa';";
 $result = $mysqli -> query($sql);
 
