@@ -51,6 +51,8 @@ function table_remove() {
 $result -> free_result();
 
 $mysqli -> close();
+
+require_once('index1.html');
 ?>
 
 <!-- #! /bin/sh

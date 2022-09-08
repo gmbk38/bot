@@ -28,12 +28,12 @@ $(document).ready(function() {
         alert("Data: " + data + "\nStatus: " + status);
       });
 
-      $.get( "data.php", function( row ) {
-        var test_for_show = row;
-        console.log(test_for_show);
-        console.log(test_for_show.nodeName);
-        test_for_show = test_for_show.toString();
-        console.log(test_for_show.nodeName);
-      });
+      // $.get( "data.php", function( row ) {
+      //   var test_for_show = row;
+      //   console.log(test_for_show);
+      //   console.log(test_for_show.nodeName);
+      //   test_for_show = test_for_show.toString();
+      //   console.log(test_for_show.nodeName);
+      // });
   });
 });
