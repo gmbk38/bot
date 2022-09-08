@@ -16,7 +16,7 @@ function test(){
 $(document).ready(function() {
   $('#testbtn').click(function() {
       var data_my = $('#textfield').val();
-      alert(data);
+      alert(data_my);
       $.post("new.php",
       {
         test: data_my,
