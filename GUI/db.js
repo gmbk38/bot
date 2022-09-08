@@ -27,5 +27,9 @@ $(document).ready(function() {
       function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
       });
+
+      $.get( "data.php", function( data ) {
+        alert(data);
+      });
   });
 });
