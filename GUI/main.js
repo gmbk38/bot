@@ -654,7 +654,7 @@ $(document).ready(function() {
   //     "</tr>"
   //   );
   // };
-    for (var i = 50; i < 70; i++) {
+    for (var i = 50; i < 60; i++) {
     $("tr").last().after(
       "<tr>" +
         "<td>" + main_data[i][0] + " </td> " +
