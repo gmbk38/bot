@@ -17,5 +17,12 @@ $(document).ready(function() {
   $('#testbtn').click(function() {
       var data = $('#textfield').val();
       alert(data);
+      $.post("new.php",
+      {
+        test: data,
+      },
+      function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+      });
   });
 });
