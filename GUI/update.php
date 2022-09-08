@@ -21,8 +21,8 @@ echo($exa);
 // $sql = "SELECT * FROM `final_test` WHERE id = '$exid' AND tag = '$extag' AND q = '$exq';";
 $result = $mysqli -> query($sql);
 
-$row = $result -> fetch_all(MYSQLI_ASSOC);
-echo($row[0]["id"]);
+// $row = $result -> fetch_all(MYSQLI_ASSOC);
+// echo($row[0]["id"]);
 $result -> free_result();
 
 $mysqli -> close();
