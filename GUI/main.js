@@ -633,15 +633,15 @@ $( "#delete_btn" ).click(function() {
   }
 });
 
-$(document).ready(function() {
-  for (data in php_row) {
-    $("tr").last().after(
-      "<tr>" +
-        "<td>" + data[0] + " </td> " +
-        "<td>" + data[1] + " </td> " +
-        "<td>" + data[2] + " </td> " +
-        "<td>" + data[3] + " </td> " +
-      "</tr>"
-    );
-  };
-});
+// $(document).ready(function() {
+//   for (data in php_row) {
+//     $("tr").last().after(
+//       "<tr>" +
+//         "<td>" + data[0] + " </td> " +
+//         "<td>" + data[1] + " </td> " +
+//         "<td>" + data[2] + " </td> " +
+//         "<td>" + data[3] + " </td> " +
+//       "</tr>"
+//     );
+//   };
+// });
