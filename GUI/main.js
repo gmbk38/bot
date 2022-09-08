@@ -649,14 +649,16 @@ $(document).ready(function() {
     };
   });
   for (var i = 0; i < main_data.length; i++) {
-    $("tr").last().after(
-      "<tr>" +
-        "<td>" + main_data[i][0] + " </td> " +
-        "<td>" + main_data[i][1] + " </td> " +
-        "<td>" + main_data[i][2] + " </td> " +
-        "<td>" + main_data[i][3] + " </td> " +
-      "</tr>"
-    );
+    if (i < 50 || i > 60) {
+      $("tr").last().after(
+        "<tr>" +
+          "<td>" + main_data[i][0] + " </td> " +
+          "<td>" + main_data[i][1] + " </td> " +
+          "<td>" + main_data[i][2] + " </td> " +
+          "<td>" + main_data[i][3] + " </td> " +
+        "</tr>"
+      );
+    }
   };
   upd_for_new_tr();
 });
