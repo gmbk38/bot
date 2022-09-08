@@ -1,6 +1,10 @@
 <?php
 $test = $_POST['test'];
-echo("OK");
-echo($test);
-echo("OK");
+if ($test == '') {
+    echo("NO DATA");
+} else {
+    echo("OK");
+    echo($test);
+    echo("OK");
+}
 ?>
