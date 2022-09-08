@@ -634,16 +634,22 @@ $( "#delete_btn" ).click(function() {
 });
 
 $(document).ready(function() {
-  console.log(php[0]);
-  // for (data in php_row) {
-  //   // console.log(data);
-  //   // $("tr").last().after(
-  //   //   "<tr>" +
-  //   //     "<td>" + data["id"] + " </td> " +
-  //   //     "<td>" + data["tag"] + " </td> " +
-  //   //     "<td>" + data["q"] + " </td> " +
-  //   //     "<td>" + data["a"] + " </td> " +
-  //   //   "</tr>"
-  //   // );
-  // };
+  main_data = [];
+  $("#data_load").each(function() {
+    var element = this.val();
+    element = String(element);
+    element = element.split(" ");
+    main_data.push(element);
+  });
+  for (data in php_row) {
+    console.log(data);
+    $("tr").last().after(
+      "<tr>" +
+        "<td>" + data["id"] + " </td> " +
+        "<td>" + data["tag"] + " </td> " +
+        "<td>" + data["q"] + " </td> " +
+        "<td>" + data["a"] + " </td> " +
+      "</tr>"
+    );
+  };
 });
