@@ -15,14 +15,13 @@ if ($mysqli -> connect_errno) {
   exit();
 }
 
-echo($exa);
 // $sql = "UPDATE `final_test` SET id = '$id', tag = '$tag', q = '$q', a = '$a' WHERE id = '$exid' AND tag = '$extag' AND q = '$exq';";
 
-// $sql = "SELECT * FROM `final_test` WHERE id = '$exid' AND tag = '$extag' AND q = '$exq';";
-// $result = $mysqli -> query($sql);
+$sql = "SELECT * FROM `final_test` WHERE id = '$exid' AND tag = '$extag' AND q = '$exq' AND a = '$exa';";
+$result = $mysqli -> query($sql);
 
-// // $row = $result -> fetch_all(MYSQLI_ASSOC);
-// // echo($row[0]["id"]);
+$row = $result -> fetch_all(MYSQLI_ASSOC);
+echo($row[0]["id"]);
 // $result -> free_result();
 
 // $mysqli -> close();
