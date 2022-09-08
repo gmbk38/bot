@@ -638,8 +638,8 @@ $(document).ready(function() {
   $("#data_load").each(function() {
     var element = $(this).val();
     element = String(element);
-    element = element.split(" ");
-    console.log(element);
+    // element = element.split(" ");
+    // console.log(element);
     main_data.push(element);
   });
   // for (data in php_row) {
