@@ -645,9 +645,7 @@ $(document).ready(function() {
     };
   });
   for (var i = 0; i < main_data.length; i++) {
-    if (i == 52) {
-      return true;
-    } else {
+    if (i != 52) {
     $("tr").last().after(
       "<tr>" +
         "<td>" + main_data[i][0] + " </td> " +
