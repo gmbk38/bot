@@ -15,7 +15,7 @@ if ($mysqli -> connect_errno) {
   exit();
 }
 
-$sql = "UPDATE `final_test` SET id = '$id', tag = '$tag', q = '$q', a = '$a' WHERE q = '$exq' AND a = '$exa';";
+$sql = "UPDATE `final_test` SET (id = '$id', tag = '$tag', q = '$q', a = '$a') WHERE (id = '$exid' AND tag = '$extag' AND q = '$exq' AND a = '$exa');";
 $result = $mysqli -> query($sql);
 
 $row = $result -> fetch_all(MYSQLI_ASSOC);
