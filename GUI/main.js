@@ -1,4 +1,4 @@
-import { update } from "./db_func";
+import { update } from "./db_func.js";
 
 const button = document.getElementById("hide_btn");
 var flag = false;
