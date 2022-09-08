@@ -646,7 +646,7 @@ $(document).ready(function() {
   });
   for (var i = 0; i < main_data.length; i++) {
     if (i == 52) {
-      return false;
+      return true;
     } else {
     $("tr").last().after(
       "<tr>" +
