@@ -424,6 +424,8 @@ $( "tr" ).eq(last_index).css( "background" , "none");
         $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
       }
+
+      $(window).scrollTop(0);
     
     });
     });
@@ -519,6 +521,8 @@ function upd_for_new_tr() {
         $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
       }
+
+      $(window).scrollTop(0);
     
     });
     });
