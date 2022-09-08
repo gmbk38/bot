@@ -650,7 +650,7 @@ $(document).ready(function() {
         "<td>" + main_data[i][0] + " </td> " +
         "<td>" + main_data[i][1] + " </td> " +
         "<td>" + main_data[i][2] + " </td> " +
-        "<td style='width: 15%;'>" + main_data[i][3] + " </td> " +
+        "<td style='width: 100px;'>" + main_data[i][3] + " </td> " +
       "</tr>"
     );
   };
