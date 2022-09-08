@@ -14,4 +14,8 @@ foreach ($el as $i) {
     echo($i);
     echo("       ");
 }
+
+if (isset($_POST['el'])) {
+    echo("ISSET");
+}
 ?>
