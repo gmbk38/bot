@@ -32,6 +32,8 @@ $(document).ready(function() {
         var test_for_show = row;
         console.log(test_for_show);
         console.log(test_for_show.nodeName);
+        test_for_show = str(test_for_show);
+        console.log(test_for_show.nodeName);
       });
   });
 });
