@@ -639,6 +639,7 @@ $(document).ready(function() {
     var element = $(this).val();
     element = String(element);
     element = element.split(" ");
+    console.log(1234324);
     console.log(element);
     main_data.push(element);
   });
