@@ -28,8 +28,8 @@ $(document).ready(function() {
         alert("Data: " + data + "\nStatus: " + status);
       });
 
-      $.get( "data.php", function( data ) {
-        alert(data);
+      $.get( "data.php", function( row ) {
+        alert(row);
       });
   });
 });
