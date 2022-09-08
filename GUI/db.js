@@ -15,11 +15,11 @@ function test(){
 
 $(document).ready(function() {
   $('#testbtn').click(function() {
-      var data = $('#textfield').val();
+      var data_my = $('#textfield').val();
       alert(data);
       $.post("new.php",
       {
-        test: data,
+        test: data_my,
       },
       function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
