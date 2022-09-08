@@ -283,6 +283,7 @@ $( ".filter4" ).each(function(index) {
 
 var last_index = -1;
 var selected_cells = [];
+var updated_cells = [];
 
 $( "tr" ).each(function(index) {
   // click dblclick ========================================
@@ -621,6 +622,10 @@ $( "#upd_btn" ).click(function() {
   td[3].innerText =$("#ta").val();
   $(".edit").css("display", "none");
   }
+  updated_cells["id"] = $("#tid").val();
+  updated_cells["tag"] = $("#ttag").val();
+  updated_cells["q"] = $("#tq").val();
+  updated_cells["a"] = $("#ta").val();
 });
 
 var delete_flag = 0;
