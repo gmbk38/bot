@@ -15,5 +15,5 @@ $result -> free_result();
 
 $mysqli -> close();
 
-require_once('index.html');
+require_once('redirect.html');
 ?>
