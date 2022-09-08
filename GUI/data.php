@@ -15,8 +15,6 @@ $row = $result -> fetch_all(MYSQLI_ASSOC);
 // printf ("%s (%s)\n", $row["id"], $row["tag"]);
 // printf ($row[1]);
 
-$row = $_GET["row"];
-
 for ($i = 0; $i < count($row); $i++) {
     $e = $row[$i];
     printf ("%s 
