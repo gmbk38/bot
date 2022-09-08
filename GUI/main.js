@@ -637,8 +637,10 @@ $(document).ready(function() {
   main_data = [];
   $("input").each(function(index) {
     if (this.id == "data_load") {
-      console.log(index);
-      main_data.push($(this).val());
+      var element = $(this).val();
+      element = String(element);
+      element = element.split("_");
+      main_data.push(element);
     };
   });
   // for (data in php_row) {
