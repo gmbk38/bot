@@ -17,11 +17,11 @@ if ($mysqli -> connect_errno) {
 
 // $sql = "UPDATE `final_test` SET id = '$id', tag = '$tag', q = '$q', a = '$a' WHERE (id = '$exid' AND tag = '$extag' AND q = '$exq' AND a = '$exa');";
 
-$sql = "SELECT * FROM `final_test` WHERE (q = '$exq' AND a = '123');";
+$sql = "SELECT * FROM `final_test` WHERE q = '$exq';";
 $result = $mysqli -> query($sql);
 
 $row = $result -> fetch_all(MYSQLI_ASSOC);
-echo($row);
+echo($row[0]["id"]);
 $result -> free_result();
 
 $mysqli -> close();
