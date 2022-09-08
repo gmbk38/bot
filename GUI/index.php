@@ -13,9 +13,10 @@ $row = $result -> fetch_all(MYSQLI_ASSOC);
 
 for ($i = 0; $i < count($row); $i++) {
   $e = $row[$i];
-  echo "<input class='data_load'>";
+  echo "<div class='data_load' value='";
   printf ("%s %s %s %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
-  echo "</input>";
+  echo "'>";
+  echo "</div>";
 }
 
 $result -> free_result();
