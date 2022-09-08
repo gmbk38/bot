@@ -1,3 +1,5 @@
+import { update } from "./db_func";
+
 const button = document.getElementById("hide_btn");
 var flag = false;
 
@@ -626,6 +628,8 @@ $( "#upd_btn" ).click(function() {
   updated_cells["tag"] = $("#ttag").val();
   updated_cells["q"] = $("#tq").val();
   updated_cells["a"] = $("#ta").val();
+
+  update(selected_cells, updated_cells);
 });
 
 var delete_flag = 0;
@@ -667,3 +671,4 @@ $(document).ready(function() {
   };
   upd_for_new_tr();
 });
+
