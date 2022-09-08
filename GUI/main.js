@@ -643,15 +643,14 @@ $(document).ready(function() {
       main_data.push(element);
     };
   });
-  // for (data in php_row) {
-  //   console.log(data);
-  //   $("tr").last().after(
-  //     "<tr>" +
-  //       "<td>" + data["id"] + " </td> " +
-  //       "<td>" + data["tag"] + " </td> " +
-  //       "<td>" + data["q"] + " </td> " +
-  //       "<td>" + data["a"] + " </td> " +
-  //     "</tr>"
-  //   );
-  // };
+  for (data in main_data) {
+    $("tr").last().after(
+      "<tr>" +
+        "<td>" + data[0] + " </td> " +
+        "<td>" + data[1] + " </td> " +
+        "<td>" + data[2] + " </td> " +
+        "<td>" + data[3] + " </td> " +
+      "</tr>"
+    );
+  };
 });
