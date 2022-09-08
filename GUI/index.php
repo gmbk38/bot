@@ -11,6 +11,13 @@ $result = $mysqli -> query($sql);
 
 $row = $result -> fetch_all(MYSQLI_ASSOC);
 
+for ($i = 0; $i < count($row); $i++) {
+  $e = $row[$i];
+  echo ("<div id='data_load'>");
+  echo ("%s %s %s %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
+  echo ("</div>");
+}
+
 $result -> free_result();
 
 $mysqli -> close();
