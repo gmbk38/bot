@@ -654,4 +654,5 @@ $(document).ready(function() {
       "</tr>"
     );
   };
+  upd_for_new_tr();
 });
