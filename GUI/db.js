@@ -32,7 +32,7 @@ $(document).ready(function() {
         var test_for_show = row;
         console.log(test_for_show);
         console.log(test_for_show.nodeName);
-        test_for_show = String(test_for_show);
+        test_for_show = test_for_show.toString();
         console.log(test_for_show.nodeName);
       });
   });
