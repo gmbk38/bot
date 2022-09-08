@@ -635,7 +635,7 @@ $( "#delete_btn" ).click(function() {
 
 $(document).ready(function() {
   main_data = [];
-  $("#data_load").each(function(index) {
+  $("tr").each(function(index) {
     console.log(index);
     main_data.push($(this).val());
   });
