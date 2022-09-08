@@ -646,6 +646,7 @@ $(document).ready(function() {
   });
   for (var i = 0; i < main_data.length; i++) {
     if (i != 52) {
+      console.log(i);
     $("tr").last().after(
       "<tr>" +
         "<td>" + main_data[i][0] + " </td> " +
