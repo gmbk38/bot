@@ -21,7 +21,7 @@ $sql = "SELECT * FROM `final_test` WHERE (id = '$exid' AND tag = '$extag' AND q 
 $result = $mysqli -> query($sql);
 
 $row = $result -> fetch_all(MYSQLI_ASSOC);
-echo($row[0]);
+echo($row[0]["id"]);
 $result -> free_result();
 
 $mysqli -> close();
