@@ -635,14 +635,17 @@ $( "#delete_btn" ).click(function() {
 
 $(document).ready(function() {
   main_data = [];
-  $("#data_load").each(function() {
-    var element = $(this).val();
-    element = String(element);
-    element = element.split(" ");
-    console.log(1234324);
-    console.log(element);
-    main_data.push(element);
-  });
+  setTimeout(
+    function() 
+    {
+      $("#data_load").each(function() {
+        var element = $(this).val();
+        element = String(element);
+        element = element.split(" ");
+        console.log(element);
+        main_data.push(element);
+      });
+    }, 5000);
   for (data in php_row) {
     console.log(data);
     $("tr").last().after(
