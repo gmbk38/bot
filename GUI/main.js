@@ -687,10 +687,27 @@ $(document).ready(function() {
   upd_for_new_tr();
 });
 
+// function update(selected_cells, updated_cells) {
+//   $.post("update copy.php",
+//   {
+//     test : selected_cells["id"],
+//   },
+//   function(data, status){
+//     alert("Data: " + data + "\nStatus: " + status);
+//   });
+// }
+
 function update(selected_cells, updated_cells) {
-  $.post("update copy.php",
+  $.post("update.php",
   {
-    test : selected_cells["id"],
+    exid : selected_cells["id"],
+    id : updated_cells["id"],
+    extag : selected_cells["tag"],
+    tag : updated_cells["tag"],
+    exq : selected_cells["q"],
+    q : updated_cells["q"],
+    exa : selected_cells["a"],
+    a : updated_cells["a"],
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
