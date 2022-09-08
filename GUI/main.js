@@ -633,14 +633,9 @@ $( "#delete_btn" ).click(function() {
   }
 });
 
-$("#data_load").each(function(index) {
-  console.log(index);
-  // main_data.push($(this).val());
-});
-
 $(document).ready(function() {
   main_data = [];
-  $("#data_load").each(function(index) {
+  $("input").each(function(index) {
     console.log(index);
     main_data.push($(this).val());
   });
