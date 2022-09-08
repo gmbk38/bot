@@ -1,4 +1,4 @@
-function update(selected_cells, updated_cells) {
+function update1(selected_cells, updated_cells) {
   $.post("update.php",
   {
     exid : selected_cells["id"],
@@ -9,6 +9,16 @@ function update(selected_cells, updated_cells) {
     q : updated_cells["q"],
     exa : selected_cells["a"],
     a : updated_cells["a"],
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+}
+
+function update(selected_cells, updated_cells) {
+  $.post("update copy.php",
+  {
+    test : selected_cells[0],
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
