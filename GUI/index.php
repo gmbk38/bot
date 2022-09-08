@@ -16,6 +16,7 @@ for ($i = 0; $i < count($row); $i++) {
   echo "<input id='data_load' style='display: None' value='";
   printf ("%s_%s_%s_%s", $e["id"], $e["tag"], $e["q"], $e["a"]);
   echo "'>";
+  echo "<br>";
 }
 
 $result -> free_result();

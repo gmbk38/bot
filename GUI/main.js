@@ -642,7 +642,6 @@ $(document).ready(function() {
       element = element.split("_");
       main_data.push(element);
       $(this).remove();
-      $("body").css("width", "100vw");
     };
   });
   for (var i = 0; i < main_data.length; i++) {
