@@ -29,9 +29,9 @@ $(document).ready(function() {
       });
 
       $.get( "data.php", function( row ) {
-        var test = row;
-        console.log(test);
-        console.log(test.nodeName);
+        var test_for_show = row;
+        console.log(test_for_show);
+        console.log(test_for_show.nodeName);
       });
   });
 });
