@@ -634,6 +634,7 @@ $( "#delete_btn" ).click(function() {
 });
 
 $(document).ready(function() {
+  console.log(php[0]);
   for (data in php_row) {
     console.log(data);
     // $("tr").last().after(
