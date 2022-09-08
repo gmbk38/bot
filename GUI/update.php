@@ -15,8 +15,8 @@ if ($mysqli -> connect_errno) {
   exit();
 }
 
-alert("data upd");
-// $sql = "UPDATE `final_test` SET id = $id, tag = $tag, q = $q, a = $a WHERE id = $exid AND tag = $extag AND q = $exq AND a = $exa;";
+// alert("data upd");
+// $sql = "UPDATE `final_test` SET id = $id, tag = $tag, q = $q, a = $a WHERE id = $exid, tag = $extag, q = $exq, a = $exa;";
 // $result = $mysqli -> query($sql);
 // alert("success data upd");
 
@@ -24,5 +24,5 @@ alert("data upd");
 
 // $result -> free_result();
 
-$mysqli -> close();
+// $mysqli -> close();
 ?>
