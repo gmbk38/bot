@@ -13,7 +13,7 @@ $row = $result -> fetch_all(MYSQLI_ASSOC);
 
 for ($i = 0; $i < count($row); $i++) {
   $e = $row[$i];
-  echo "<input id='data_load' value='";
+  echo "<input id='data_load' style='display: None' value='";
   printf ("%s %s %s %s", $e["id"], $e["tag"], $e["q"], $e["a"]);
   echo "'>";
 }
