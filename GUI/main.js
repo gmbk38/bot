@@ -636,8 +636,10 @@ $( "#delete_btn" ).click(function() {
 $(document).ready(function() {
   main_data = [];
   $("input").each(function(index) {
-    console.log(index);
-    main_data.push($(this).val());
+    if (this.id == "data_load") {
+      console.log(index);
+      main_data.push($(this).val());
+    };
   });
   // for (data in php_row) {
   //   console.log(data);
