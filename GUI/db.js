@@ -13,6 +13,9 @@ function test(){
       );``
 }
 
-function test123(){
-    alert("норм");
-}
+$(document).ready(function() {
+  $('#testbtn').click(function() {
+      var data = $('#textfield').val();
+      alert(data);
+  });
+});
