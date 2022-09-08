@@ -635,7 +635,7 @@ $( "#delete_btn" ).click(function() {
 
 $(document).ready(function() {
   main_data = [];
-  $(".data_load").each(function() {
+  $("#data_load").each(function() {
     var element = $(this).val();
     element = String(element);
     element = element.split(" ");
