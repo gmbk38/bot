@@ -635,7 +635,7 @@ $( "#delete_btn" ).click(function() {
 
 $(document).ready(function() {
   for (data in php_row) {
-    console.log(data["id"]);
+    console.log(data);
     // $("tr").last().after(
     //   "<tr>" +
     //     "<td>" + data["id"] + " </td> " +
