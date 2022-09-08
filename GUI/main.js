@@ -642,15 +642,15 @@ $(document).ready(function() {
     console.log(element);
     main_data.push(element);
   });
-  for (data in php_row) {
-    console.log(data);
-    $("tr").last().after(
-      "<tr>" +
-        "<td>" + data["id"] + " </td> " +
-        "<td>" + data["tag"] + " </td> " +
-        "<td>" + data["q"] + " </td> " +
-        "<td>" + data["a"] + " </td> " +
-      "</tr>"
-    );
-  };
+  // for (data in php_row) {
+  //   console.log(data);
+  //   $("tr").last().after(
+  //     "<tr>" +
+  //       "<td>" + data["id"] + " </td> " +
+  //       "<td>" + data["tag"] + " </td> " +
+  //       "<td>" + data["q"] + " </td> " +
+  //       "<td>" + data["a"] + " </td> " +
+  //     "</tr>"
+  //   );
+  // };
 });
