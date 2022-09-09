@@ -658,6 +658,7 @@ $( "#delete_btn" ).click(function() {
     $("tr").eq(last_index).css("display", "none");
     $("#MyAlert").css("display", "none");
     $(".edit").css("display", "none");
+    delete_data(selected_cells);
   }
 });
 
@@ -708,6 +709,19 @@ function update(selected_cells, updated_cells) {
     q : updated_cells["q"],
     exa : selected_cells["a"],
     a : updated_cells["a"],
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+}
+
+function delete_data(selected_cells) {
+  $.post("delete.php",
+  {
+    exid : selected_cells["id"],
+    extag : selected_cells["tag"],
+    exq : selected_cells["q"],
+    exa : selected_cells["a"],
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
