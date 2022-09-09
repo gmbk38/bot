@@ -248,7 +248,8 @@ input:checked + .slider:before {
   display: inline-block;
   position: relative;
 
-  color: var(--table-text);
+  /* color: var(--table-text); */
+  color: var(--red-btn);
 
   width: 70vw;
   /* height: 40vh; */
