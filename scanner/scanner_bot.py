@@ -12,7 +12,14 @@ def hello_msg(message):
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    print(message.text)
-    print(message.chat.id)
+    flag = 0
+    if (message.chat.id == -1001192574333):
+        scan(message.text, 1)
+
+    elif (message.chat.id == -1001709875112):
+        scan(message.text, 2)
+    
+    else:
+        scan(message.text, 3)
 
 bot.polling(none_stop=True, interval=0)
