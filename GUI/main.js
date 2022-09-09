@@ -629,6 +629,7 @@ $( "#upd_btn" ).click(function() {
     );
     $(".edit").css("display", "none");
     upd_for_new_tr();
+    add_data(selected_cells);
   } else {
   tr = document.getElementsByTagName("tr");
   tr = tr[last_index];
@@ -722,6 +723,19 @@ function delete_data(selected_cells) {
     extag : selected_cells["tag"],
     exq : selected_cells["q"],
     exa : selected_cells["a"],
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+}
+
+function add_data(selected_cells) {
+  $.post("add.php",
+  {
+    id : selected_cells["id"],
+    tag : selected_cells["tag"],
+    q : selected_cells["q"],
+    a : selected_cells["a"],
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
