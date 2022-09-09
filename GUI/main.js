@@ -629,6 +629,10 @@ $( "#upd_btn" ).click(function() {
     );
     $(".edit").css("display", "none");
     upd_for_new_tr();
+    selected_cells["id"] = $("#tid").val();
+    selected_cells["tag"] = $("#ttag").val();
+    selected_cells["q"] = $("#tq").val();
+    selected_cells["a"] = $("#ta").val();
     add_data(selected_cells);
   } else {
   tr = document.getElementsByTagName("tr");
