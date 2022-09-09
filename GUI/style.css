@@ -266,7 +266,7 @@ input:checked + .slider:before {
 }
 
 .db table {
-  color: var(--red-btn);
+  color: var(--table-text);
 
   background-color: var(--bg-ultra-light);
   border-collapse: collapse;
