@@ -248,8 +248,7 @@ input:checked + .slider:before {
   display: inline-block;
   position: relative;
 
-  /* color: var(--table-text); */
-  color: var(--red-btn);
+  color: var(--table-text);
 
   width: 70vw;
   /* height: 40vh; */
@@ -267,6 +266,8 @@ input:checked + .slider:before {
 }
 
 .db table {
+  color: var(--red-btn);
+
   background-color: var(--bg-ultra-light);
   border-collapse: collapse;
   width: 100%;
