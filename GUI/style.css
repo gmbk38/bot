@@ -293,6 +293,7 @@ input:checked + .slider:before {
 }
 
 .db tr:hover {
+  color: var(--table-text);
   background: var(--light-fade);
 }
 
