@@ -16,7 +16,7 @@ def get_text_messages(message):
     # print("Получаю")
     print(message.text)
     # print(message.id)
-    # print(message.chat.id)
+    print(message.chat.id)
     # for i in range(-100, 150):
     #     try:
     #         message.id = i
