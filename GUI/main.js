@@ -467,8 +467,9 @@ $( "tr" ).eq(last_index).css( "background" , "none");
         $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
       }
-      
+
       var current_y = toString(coordinates["y"]) + "px";
+      console.log(current_y);
       $("#edit_text").css("top", current_y);
       // $(window).scrollTop(0);
     
