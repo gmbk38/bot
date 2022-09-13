@@ -425,7 +425,31 @@ input:checked + .slider:before {
   transform: rotate(90deg);
 }
 
-#edit_btn:hover, #upd_btn:hover, #hide_btn:hover {
+#download_btn {
+  display: inline-block;
+  position: relative;
+
+  border-radius: 1ch;
+  /* width: 30px; */
+  height: 30px;
+  left: 0.5vw;
+  font-weight: bold;
+
+  border: none;
+  color: var(--table-text);
+  background-color: var(--bg-light);
+
+  transition: .4s;
+}
+
+/* #hide_btn i {
+  position: relative;
+
+  border: solid black;
+  border-width: 0 6px 6px 0;
+} */
+
+#edit_btn:hover, #upd_btn:hover, #hide_btn:hover, #download_btn:hover {
   background-color: var(--bg-dark);
 }
 
@@ -436,7 +460,7 @@ input:checked + .slider:before {
 
 
   width: 100%;
-  height: 125vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -541,3 +565,4 @@ input:checked + .slider:before {
   display: none;
   margin-top: 1.5%;
 }
+

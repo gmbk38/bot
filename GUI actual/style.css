@@ -1,0 +1,543 @@
+::-webkit-scrollbar { display: none; }
+
+
+
+body {
+    --bg-ultra-light: #eef4ff;
+    --bg-light: #b4ceff;
+    --bg-dark: #6babff; /* для ночной темы */
+    --headline: #3a8fff;
+    --text: #003c8a;
+    --border: #0056c7;
+    --main-bg: white;
+    --table-text: black;
+    --red-btn: #a00000;
+
+    --dark-fade: linear-gradient(90deg, var(--headline), var(--text));
+    --light-fade: linear-gradient(90deg, var(--headline), var(--border));
+
+    background: var(--main-bg);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    transition: .4s;
+
+    margin: 0;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                    not supported by any browser */
+}
+
+.sort {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-column-gap: 0.5%;
+
+    position: relative;
+
+    width: 70vw;
+    height: 25vh;
+    padding: 1.5vw;
+    border-radius: 2ch;
+
+    margin-top: 1.5%;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: var(--bg-light);
+
+    transition: .4s;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.sort > div {
+    display: block;
+    position: relative;
+
+    width: auto;
+
+    /* box-shadow: 0px 2px 4px var(--headline), 0px -2px 4px var(--headline); */
+    /* border: 1px solid var(--border); */
+}
+
+.sort h2 {
+    margin: 0;
+    padding: 8px;
+    font-size: 18px;
+
+    color: var(--headline);
+    text-align: center;
+
+    border-radius: 1ch;
+
+    background-color: var(--bg-ultra-light);
+    /* border: 2px solid green; */
+    transition: .4s;
+}
+
+.sort p {
+    position: relative;
+
+    margin: 0;
+
+    font-size: 14px;
+    /* border: 2px solid blue; */
+
+    color: var(--text);
+}
+
+.sort_grid > div {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 20px;
+  margin-top: 2vh;
+  /* border: 2px solid red; */
+}
+
+.sort_grid p {
+  margin-left: 10px;
+}
+
+.sort_grid input {
+    position: relative;
+    
+    /* left: 50%;
+    transform: translateX(-50%); */
+
+    height: 13px;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 1em;
+    border: 1px solid var(--headline);
+}
+
+.sort_grid input:focus {
+  outline: 0;
+  outline-offset: 0;
+  box-shadow: 0px 0px 3px var(--border);
+}
+
+.filters div {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+}
+
+.filters p {
+  position: relative;
+  margin: 0;
+
+  /* border: 2px solid red; */
+}
+
+.filters {
+  display: flex;
+  position: relative;
+
+  /* border: 2px solid green; */
+
+  margin-top: 2vh;
+}
+
+.filters > div {
+  margin: auto;
+  height: 20px;
+  /* border: 2px solid green; */
+}
+
+/* ======================================== */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  /* width: 60px;
+  height: 34px; */
+  width: 30px;
+  height: 17px;
+
+  /* border: 2px solid blue; */
+  /* размер фона свитчера */
+}
+  
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+  
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+  /* фон свитчера off */
+  }
+  
+.slider:before {
+  position: absolute;
+  content: "";
+  /* height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px; */
+  height: 13px;
+  width: 13px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+  /* сам тумблер */
+}
+  
+input:checked + .slider {
+  background: var(--dark-fade);
+
+  border: 0;
+  /* бордер для того, чтобы не слетат градиент. Отключаю при on */
+}
+  
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--headline);
+}
+  
+input:checked + .slider:before {
+  /* -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px); */
+
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+
+  left: 2px;
+  bottom: 2px;
+  /* лефт и ботом для того, чтобы не слетат градиент. Отключаю при on */
+
+  /* насколько двигаем */
+}
+  
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+  border: 1px solid #64646440;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ====================================== */
+
+.db {
+  display: inline-block;
+  position: relative;
+
+  color: var(--table-text);
+
+  width: 70vw;
+  /* height: 40vh; */
+  padding: 1.5vw;
+  border-radius: 2ch;
+
+  margin-top: 1.5%;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: var(--bg-light);
+
+  transition: .4s;
+}
+
+.db table {
+  /* color: var(--table-text); */
+
+  background-color: var(--bg-ultra-light);
+  border-collapse: collapse;
+  width: 100%;
+
+  border-top-left-radius: 1ch;
+  border-top-right-radius: 1ch;
+
+  transition: .2s;
+}
+
+.db td {
+  padding: 8px;
+  width: 25%;
+  border: 1px solid #ccc;
+
+  transition: .2s;
+}
+
+.db th {
+  background-color: var(--bg-ultra-light);
+  border: 1px solid #ccc;
+  padding: 8px;
+
+  transition: .2s;
+}
+
+.db tr:hover {
+  background: var(--light-fade);
+}
+
+.extra {
+  display: block;
+  position: relative;
+
+  /* border: 2px solid green; */
+
+  margin-top: 2vh;
+}
+
+.extra div:first-child {
+  display: inline-flex;
+  position: relative;
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.extra p {
+  margin-left: 10px;
+}
+
+#hide_btn {
+  display: flex;
+  position: relative;
+
+  border-radius: 1ch;
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  background-color: var(--bg-light);
+
+  transition: .4s;
+}
+
+/* #hide_btn i {
+  position: relative;
+
+  border: solid black;
+  border-width: 0 6px 6px 0;
+} */
+
+#hide_btn > div {
+  position: relative;
+
+  width: 4px;
+  height: 16px;
+  background-color: var(--table-text);
+
+  top: calc(50% - 7.5px);
+  /* Важно ============================================= */
+  /* border-radius: 2px; */
+
+  transition: .4s;
+}
+
+/* #left {
+  left: 2.5px;
+  transform: rotate(135deg);
+}
+
+#right {
+  left: 7.5px;
+  transform: rotate(-135deg);
+} */
+
+#left {
+  left: 7px;
+  transform: rotate(135deg);
+}
+
+#right {
+  left: 3px;
+  transform: rotate(-135deg);
+}
+
+.top_menu {
+  position: relative;
+  display: inline-flex;
+  top: 1.5vh;
+
+  /* padding: 1.5vw;
+  width: 70vw; */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* border: 2px solid red; */
+}
+
+#edit_btn {
+  display: flex;
+  position: relative;
+
+  border-radius: 1ch;
+  width: 30px;
+  height: 30px;
+  right: 0.5vw;
+
+  border: none;
+  background-color: var(--bg-light);
+
+  transition: .4s;
+}
+
+#edit_btn > div {
+  position: relative;
+
+  width: 4px;
+  height: 16px;
+  background-color: var(--table-text);
+
+  top: calc(50% - 7.5px);
+  /* Важно ============================================= */
+  /* border-radius: 2px; */
+
+  transition: .4s;
+}
+
+#h_line {
+  left: calc(50% - 2px);
+}
+
+#v_line {
+  left: calc(50% - 6px);
+  transform: rotate(90deg);
+}
+
+#edit_btn:hover, #upd_btn:hover, #hide_btn:hover {
+  background-color: var(--bg-dark);
+}
+
+.edit {
+  display: none;
+  position: absolute;
+  z-index: 2;
+
+
+  width: 100%;
+  height: 125vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#edit_text {
+  display: inline-block;
+  position: relative;
+
+  color: var(--table-text);
+
+  width: 70vw;
+  padding: 1.5vw;
+  border-radius: 2ch;
+
+  margin-top: 3.5%;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: var(--bg-ultra-light);
+
+  transition: .4s;
+}
+
+#edit_text div:first-child {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr 3fr;
+
+  height: 20vh;
+
+  grid-column-gap: 1%;
+}
+
+#edit_text textarea {
+  position: relative;
+
+  resize: none;
+  border-radius: 1ch;
+}
+
+#edit_text #upd_btn {
+  position: relative;
+
+  border-radius: 1ch;
+  padding: 0.5vw;
+
+  margin-right: 5px;
+  width: 100px;
+
+  color: var(--table-text);
+
+  border: none;
+  background-color: var(--bg-light);
+
+  transition: .4s;
+}
+
+#edit_text div:nth-child(2) {
+  display: inline-block;
+  position: relative;
+
+  margin-top: 1.5vw;
+  left: 50%;
+
+  transform: translate(-50%);
+}
+
+#delete_btn {
+  position: relative;
+
+  border-radius: 1ch;
+  padding: 0.5vw;
+
+  margin-right: 5px;
+  width: 100px;
+
+  color: white;
+
+  border: none;
+  background-color: var(--red-btn);
+
+  transition: .4s;
+}
+
+#delete_btn:hover {
+  /* cursor: not-allowed; */
+  background-color: #600000;
+}
+
+.edit p {
+  display: block;
+  position: relative;
+
+  text-align: center;
+
+  margin: 0;
+  color: var(--red-btn);
+
+  /* border: 2px solid red; */
+}
+
+#MyAlert {
+  display: none;
+  margin-top: 1.5%;
+}
