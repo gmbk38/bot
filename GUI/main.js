@@ -1,19 +1,44 @@
-function update1(selected_cells, updated_cells) {
-  $.post("update.php",
-  {
-    exid : selected_cells["id"],
-    id : updated_cells["id"],
-    extag : selected_cells["tag"],
-    tag : updated_cells["tag"],
-    exq : selected_cells["q"],
-    q : updated_cells["q"],
-    exa : selected_cells["a"],
-    a : updated_cells["a"],
-  },
-  function(data, status){
-    alert("Data: " + data + "\nStatus: " + status);
-  });
+function getPosition(e){
+	var x = y = 0;
+ 
+	if (!e) {
+		var e = window.event;
+	}
+ 
+	if (e.pageX || e.pageY){
+		x = e.pageX;
+		y = e.pageY;
+	} else if (e.clientX || e.clientY){
+		x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+		y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+	}
+ 
+	return {x: x, y: y}
 }
+
+var coordinates = {};
+
+$('body').click(function(e){
+	coordinates = getPosition(e);
+  return coordinates;
+});
+
+// function update1(selected_cells, updated_cells) {
+//   $.post("update.php",
+//   {
+//     exid : selected_cells["id"],
+//     id : updated_cells["id"],
+//     extag : selected_cells["tag"],
+//     tag : updated_cells["tag"],
+//     exq : selected_cells["q"],
+//     q : updated_cells["q"],
+//     exa : selected_cells["a"],
+//     a : updated_cells["a"],
+//   },
+//   function(data, status){
+//     alert("Data: " + data + "\nStatus: " + status);
+//   });
+// }
 
 const button = document.getElementById("hide_btn");
 var flag = false;
@@ -442,8 +467,10 @@ $( "tr" ).eq(last_index).css( "background" , "none");
         $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
       }
-
-      $(window).scrollTop(0);
+      
+      var current_y = toString(coordinates["y"]) + "px";
+      $("#edit_text").css("top", current_y);
+      // $(window).scrollTop(0);
     
     });
     });
@@ -520,7 +547,6 @@ function upd_for_new_tr() {
         $( "#ta" ).val(selected_cells["a"]);
         $("#delete_btn").css("display", "inline-block");
         $(".edit").css("display", "block");
-    
       } else {
         $(this).css( "background", "var(--light-fade)");
         last_index = index;
@@ -540,7 +566,9 @@ function upd_for_new_tr() {
         $(".edit").css("display", "block");
       }
 
-      $(window).scrollTop(0);
+      var current_y = toString(coordinates["y"]) + "px";
+      $("#edit_text").css("top", current_y);
+      // $(window).scrollTop(0);
     
     });
     });
