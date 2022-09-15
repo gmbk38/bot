@@ -766,3 +766,14 @@ function add_data(selected_cells) {
     alert("Data: " + data + "\nStatus: " + status);
   });
 }
+
+// function getFilename(fullPath) {
+//   return fullPath.replace(/^.*[\\\/]/, '');
+// }
+
+// console.log(getFilename('/my-folder/myFile.png'));
+
+$("#bach").click(function() {
+  var link = document.getElementById("bach_link");
+  link.click();
+});
