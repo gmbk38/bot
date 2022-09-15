@@ -614,6 +614,7 @@ $(document).keyup(function(e){
 
   if(e.keyCode === 27)
       $(".edit").css("display", "none");
+      $(".download_back").css("display", "none");
       $("body").css("overflow", "visible");
 
   if(e.keyCode === 46 && last_index != -1)
@@ -766,6 +767,13 @@ function add_data(selected_cells) {
     alert("Data: " + data + "\nStatus: " + status);
   });
 }
+
+
+$( "#download_btn" ).click(function() {
+  $(".download_back").css("display", "block");
+  $("body").css("overflow", "hidden");
+  console.log(1);
+});
 
 // function getFilename(fullPath) {
 //   return fullPath.replace(/^.*[\\\/]/, '');

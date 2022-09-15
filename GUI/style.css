@@ -588,7 +588,7 @@ input:checked + .slider:before {
 }
 
 .download_back {
-  display: block;
+  display: none;
   position: absolute;
   z-index: 2;
 
@@ -642,5 +642,6 @@ input:checked + .slider:before {
   /* transform: translateY(-100%); */
 
  /* color: var(--headline); */
+ color: var(--table-text);
 }
 
