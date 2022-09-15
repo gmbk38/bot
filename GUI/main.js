@@ -772,7 +772,6 @@ function add_data(selected_cells) {
 $( "#download_btn" ).click(function() {
   $(".download_back").css("display", "block");
   $("body").css("overflow", "hidden");
-  console.log(1);
 });
 
 // function getFilename(fullPath) {
