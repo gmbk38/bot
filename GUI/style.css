@@ -600,7 +600,7 @@ input:checked + .slider:before {
 
 .download_window {
   display: flex;
-  position: relative;
+  position: fixed;
   /* flex-wrap: wrap; */
   flex-flow: row wrap;
   align-content: space-between;
