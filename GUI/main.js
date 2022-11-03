@@ -785,6 +785,16 @@ $("#bach").click(function() {
   link.click();
 });
 
+$("#master").click(function() {
+  var link = document.getElementById("master_link");
+  link.click();
+});
+
+$("#extra").click(function() {
+  var link = document.getElementById("extra_link");
+  link.click();
+});
+
 var files; // переменная. будет содержать данные файлов
 
 // заполняем переменную данными, при изменении значения поля file 
