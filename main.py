@@ -102,6 +102,11 @@ def hello_msg(message):
     user.nickname = message.from_user.username
     user.user_record()
 
+#Вывели файл с новыми вопросами
+@bot.message_handler(commands=['getNewQ'])
+def giveNewQ(message):
+    bot.send_document(message.chat.id, open(f'./newQ/Новые вопросы.xlsx', 'rb'))
+
 # Ответ на вопрос
 @bot.message_handler(content_types=['text'])
 def answer_finder(message):

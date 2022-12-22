@@ -1,4 +1,5 @@
 import difflib
+import newQ
 
 def similarity(text, info):
     que = 0
@@ -17,4 +18,8 @@ def similarity(text, info):
 #   print(f"|||{que}||| имеет {int(que_similarity*100)}% совпадение с вопросом")
 #   return matcher.ratio()
     # return ans
-    return ans
+    if que_similarity <= 0.3:
+        newQ.newq_record(text)
+        return 'Я не могу ответить на твой вопрос. Я сохраню его и передам коллегам'
+    else:    
+        return ans
