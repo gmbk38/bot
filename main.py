@@ -105,7 +105,7 @@ def hello_msg(message):
 #Вывели файл с новыми вопросами
 @bot.message_handler(commands=['getNewQ'])
 def giveNewQ(message):
-    bot.send_document(message.chat.id, open(f'./newQ/Новые вопросы.xlsx', 'rb'))
+    bot.send_document(message.chat.id, open(f'/home/start/bot/newQ/Новые вопросы.xlsx', 'rb'))
 
 # Ответ на вопрос
 @bot.message_handler(content_types=['text'])
