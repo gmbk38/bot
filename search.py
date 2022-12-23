@@ -19,7 +19,7 @@ def similarity(text, info):
 #   return matcher.ratio()
     # return ans
     if que_similarity <= 0.3:
-        newQ.newq_record(text)
+        newq.newq_record(text)
         return 'Я не могу ответить на твой вопрос. Я сохраню его и передам коллегам'
     else:    
         return ans
