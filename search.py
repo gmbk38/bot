@@ -1,5 +1,5 @@
 import difflib
-import newQ
+import newq
 
 def similarity(text, info):
     que = 0
